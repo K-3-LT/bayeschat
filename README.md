@@ -81,7 +81,7 @@ over Streamable HTTP** and runs their tools inside the conversation.
 > iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
 
-## Saved configuration, one tap to switch
+## Chat Presets: saved configuration, one tap to switch
 
 A preset is not a saved prompt. It's the entire configuration for one kind of
 task, switched in one tap.
@@ -96,7 +96,7 @@ task, switched in one tap.
 - The composer only shows the parameters that differ from the defaults, so a tuned
   preset looks different at a glance.
 
-## AI remembers you across chats
+## Memory: AI remembers you across chats
 
 Memory is not a black box that quietly rewrites your prompt.
 
