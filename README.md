@@ -41,7 +41,7 @@ running on your own machine — and add MCP servers when a task needs tools. Key
 conversations and memory stay on the device; there is no account and no server in
 between.
 
-## BYOK: any provider, any endpoint
+## BYOK: any provider, local or cloud
 
 Point BayesChat at whatever you already pay for, and manage it from one place.
 Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
@@ -62,7 +62,7 @@ Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
   hardcoded table
 - Keys live in the **Keychain**, never in plain files
 
-## MCP: real tools, inside the conversation
+## MCP: Plug in your AI into the real world
 
 Most MCP tooling stops at the desktop. BayesChat connects to **remote MCP servers
 over Streamable HTTP** and runs their tools inside the conversation.
@@ -81,7 +81,7 @@ over Streamable HTTP** and runs their tools inside the conversation.
 > iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
 
-## Chat Presets: the whole setup, saved
+## Saved configuration, one tap to switch
 
 A preset is not a saved prompt. It's the entire configuration for one kind of
 task, switched in one tap.
@@ -96,7 +96,7 @@ task, switched in one tap.
 - The composer only shows the parameters that differ from the defaults, so a tuned
   preset looks different at a glance.
 
-## Memory: it remembers you, across conversations
+## AI remembers you across chats
 
 Memory is not a black box that quietly rewrites your prompt.
 
