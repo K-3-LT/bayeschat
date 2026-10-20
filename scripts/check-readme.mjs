@@ -11,9 +11,10 @@
 //      derived from CHANGELOG.md, so this check just re-derives it.
 //   2. A badge or logo file is renamed or deleted and the README shows a broken
 //      image on GitHub, where nobody reloads the page to look.
-//   3. The cover is re-rendered — a new Chrome build, a wider typeface, a changed
-//      headline — and the result reflows or clips. The pins below catch a changed
-//      image, so a regeneration gets looked at instead of quietly shipping.
+//   3. The icon is replaced with a new one that lost its baked-in iOS corner
+//      mask. In dark mode that reads as a pasted black square, which is subtle
+//      enough to ship. The pins below catch it; regenerate intentionally and
+//      update them.
 //   4. An asset is added to docs/badges or docs/brand and never referenced, or
 //      removed from the README and left behind.
 //
@@ -32,10 +33,11 @@ const changelog = readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
 
 /** Artwork whose bytes are load-bearing, not just present. */
 const PINS = {
-  // Rendered by og-readme-template.html in bayeschat-landing and synced by hand:
-  // a re-render reflows type, so a changed banner should be looked at before its
-  // pin is updated. Regeneration steps are in docs/readme.md.
-  'docs/brand/readme-banner.webp': '71c4945dc526fd6f2cc898e03e65d00c31d80e67f0f1b7cfb0213fbfabf777dc',
+  // Rounded corners baked in (iOS 22.37% mask, transparent outside). The
+  // unrounded originals live in the landing repo's assets/brand; see
+  // docs/readme.md for the regeneration command.
+  'docs/brand/icon.png': '00b7729cd21594d2f374604f6afedc651d508b2d45bc420557c52ee497256d94',
+  'docs/brand/icon-dark.png': 'e7e07501944acce924d8cde6e944711810598c4334203b16da4d632453a9ed9b',
   // Apple's own "Download on the App Store" badge, unmodified.
   'docs/brand/app-store.svg': 'a26fc5b38380272c92e9019a2eb8b45542a66814b3e2b203772db8904b9fb99f',
 };
@@ -84,8 +86,8 @@ for (const [rel, expected] of Object.entries(PINS)) {
   if (actual !== expected) {
     fail(
       `${rel} changed (sha256 ${actual.slice(0, 12)}…).\n` +
-        '    If the new art is intentional, update PINS in scripts/check-readme.mjs —\n' +
-        '    after looking at it, since a re-render can reflow type. See docs/readme.md.'
+        '    If the new art is intentional, update PINS in scripts/check-readme.mjs.\n' +
+        '    If the icon was replaced, re-bake the corner mask first — see docs/readme.md.'
     );
   }
 }
@@ -98,7 +100,6 @@ for (const [needle, why] of [
   ['docs/badges/device.svg', 'the device badge'],
   ['docs/badges/languages.svg', 'the language badge'],
   ['docs/badges/pro.svg', 'the price badge'],
-  ['docs/brand/readme-banner.webp', 'the README cover'],
   ['docs/brand/app-store.svg', 'the App Store badge'],
   ['https://bayeschat.xyz', 'the website button'],
 ]) {

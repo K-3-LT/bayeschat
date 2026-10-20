@@ -1,6 +1,13 @@
 <p align="center">
-  <img src="docs/brand/readme-banner.webp" width="1012" alt="BayesChat — a private iOS AI chat app for iPhone and iPad: bring your own key, MCP tools, on-device memory and Chat Presets, all on your device">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/icon-dark.png">
+    <img src="docs/brand/icon.png" width="104" height="104" alt="BayesChat app icon">
+  </picture>
 </p>
+
+<h1 align="center">BayesChat</h1>
+
+<p align="center"><b>Private iOS AI chat: BYOK, MCP, memory and presets — all on your device.</b></p>
 
 <p align="center">
   <img src="docs/badges/ios.svg" alt="iOS 17 or later">
@@ -134,7 +141,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/03-chat-presets.webp" width="240">
 </p>
 
-<p align="center"><sub><b>A private AI chat workspace</b> &nbsp;·&nbsp; <b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
+<p align="center"><sub><b>A private AI chat workspace</b> \&nbsp;·\&nbsp; <b>Any provider, local or cloud</b> \&nbsp;·\&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
 
 <p align="center">
   <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
@@ -142,7 +149,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/06-markdown-latex.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
+<p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> \&nbsp;·\&nbsp; <b>MCP tool calls, fully expanded</b> \&nbsp;·\&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
 
 <p align="center">
   <img src="docs/screenshots/07-parameters.webp" width="240">
@@ -150,7 +157,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b> &nbsp;·&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
+<p align="center"><sub><b>Sampling controls, per preset</b> \&nbsp;·\&nbsp; <b>Themes and typography</b> \&nbsp;·\&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
 
 ## Everything else
 

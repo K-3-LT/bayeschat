@@ -1,14 +1,8 @@
 # The README header
 
-`README.md` opens with a centred block: a cover image, fact badges, an App Store
-badge, a website button and jump links. Everything in it is a static file in this
-repo — the badges are committed SVG, not `img.shields.io` URLs.
-
-The cover is rendered in the landing repo (`og-readme-template.html`, drawn by
-`scripts/render-og-variants.sh` in the same system Chrome that measures the type)
-and synced here as webp. It is its own dark surface, so one file covers GitHub's
-light and dark themes; that is also why there is no separate logo plus `<h1>` above
-it — the cover carries the wordmark, and its `alt` text carries the pitch.
+`README.md` opens with a centred block: logo, name, one-line pitch, fact badges,
+an App Store badge, a website button and jump links. Everything in it is a static
+file in this repo — the badges are committed SVG, not `img.shields.io` URLs.
 
 That is a deliberate choice. The product's claim is "no tracking, no analytics
 SDK, no third-party telemetry", so its own front page should not fetch images
@@ -18,25 +12,12 @@ from a third-party server every time somebody loads it.
 
 | Path | What it is |
 | --- | --- |
-| `docs/brand/readme-banner.webp` | The 1280x320 cover, rendered from `og-readme-template.html` |
+| `docs/brand/icon.png` | The app icon with its iOS corner mask baked in, for GitHub's light theme |
+| `docs/brand/icon-dark.png` | The same for `prefers-color-scheme: dark`, picked by `<picture>` |
 | `docs/brand/app-store.svg` | Apple's own "Download on the App Store" badge, unmodified |
 | `docs/badges/*.svg` | The fact badges and the website button, drawn here |
 
-`docs/screenshots/*.webp` are the App Store marketing frames shown further down the
-README. They are not cropped by hand: they are the generated frames at 2x the width
-the README displays them, re-encoded to webp. Regenerate the whole set from the
-landing repo:
-
-```bash
-# in bayeschat-landing
-python3 appstore-screenshot-generator/generate_appstore_screenshot.py --date 20260827 --device iphone-6.9
-python3 appstore-screenshot-generator/generate_appstore_screenshot.py --date 20261020 --device iphone-6.9
-bash scripts/render-og-variants.sh      # re-renders the cover among the other cards
-bash scripts/sync-readme-assets.sh      # writes the cover and screenshots here
-```
-
-`sync-readme-assets.sh` holds the slug to frame map, so a new screenshot is one line
-there plus one `<img>` in the README.
+`docs/screenshots/*.webp` are the marketing frames shown further down the README.
 
 ## The claims in the badges
 
@@ -71,8 +52,8 @@ node scripts/check-readme.mjs                # exit 0 = the whole header is cons
 - the version badge disagrees with `CHANGELOG.md`;
 - the README references an image that is not in the repository, or an asset in
   `docs/badges` / `docs/brand` is committed but unused;
-- the cover or Apple's badge have different bytes than the pins in the script —
-  which is what makes a re-rendered cover get looked at instead of shipped blind;
+- the icon, the dark icon, or Apple's badge have different bytes than the pins in
+  the script — which is what catches an icon replaced without its corner mask;
 - one of the five badges or the website button has been dropped from the header.
 
 The release step runs both commands after copying `CHANGELOG.md`; see the app
@@ -80,12 +61,34 @@ repository's `AGENTS.md`.
 
 ## Changing the artwork
 
-`bayeschat-landing` owns brand art. Edit `og-readme-template.html` there, run
-`scripts/render-og-variants.sh` (system Chrome, transparent outside the rounded
-card), then `scripts/sync-readme-assets.sh` to re-encode and copy it here. Update
-the `docs/brand/readme-banner.webp` pin in `scripts/check-readme.mjs` to the sha256
-the check reports — after looking at the image, since a re-render reflows type.
+The icons are the landing repo's `assets/brand/icon.png` and `icon-dark.png` —
+`bayeschat-landing` owns brand art — with the iOS corner mask (22.37% radius,
+transparent outside) baked in. GitHub cannot clip an `<img>`, and without the mask
+the dark tile reads as a pasted black square.
 
-A new badge is the same shape as the existing ones: an opaque pill, white
-600-weight text, `#3C5FBE` fill (white text clears 4.5:1 on it), 20px tall, width
-`24 + 6.4` per character.
+Regenerate from the landing repo:
+
+```bash
+python3 - <<'PY'
+from PIL import Image, ImageDraw
+from pathlib import Path
+
+def round_corners(src, dst):
+    im = Image.open(src).convert("RGBA")
+    w, h = im.size
+    s = 4
+    mask = Image.new("L", (w * s, h * s), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, w * s - 1, h * s - 1), radius=int(w * s * 0.2237), fill=255)
+    im.putalpha(mask.resize((w, h), Image.LANCZOS))
+    im.save(dst)
+
+brand = Path.home() / "git/bayeschat-landing/assets/brand"
+round_corners(brand / "icon.png", Path("docs/brand/icon.png"))
+round_corners(brand / "icon-dark.png", Path("docs/brand/icon-dark.png"))
+PY
+```
+
+Then update the two `docs/brand/icon*.png` pins in `scripts/check-readme.mjs` to
+the new sha256 values the check reports. A new badge is the same shape as the
+existing ones: an opaque pill, white 600-weight text, `#3C5FBE` fill (white text
+clears 4.5:1 on it), 20px tall.
