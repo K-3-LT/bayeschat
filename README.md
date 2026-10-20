@@ -35,6 +35,12 @@ the full changelog of what shipped in each version.
 
 ---
 
+BayesChat is an AI chat client for iPhone and iPad. You bring your own API key,
+point it at any OpenAI- or Anthropic-compatible provider — a cloud API or a model
+running on your own machine — and add MCP servers when a task needs tools. Keys,
+conversations and memory stay on the device; there is no account and no server in
+between.
+
 ## BYOK: any provider, any endpoint
 
 Point BayesChat at whatever you already pay for, and manage it from one place.
@@ -136,25 +142,25 @@ The product promise is verifiable, not just stated.
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/01-hero-privacy.webp" width="240">
-  <img src="docs/screenshots/02-byok-providers.webp" width="240">
-  <img src="docs/screenshots/03-chat-presets.webp" width="240">
+  <img src="docs/screenshots/01-hero-privacy.webp" width="240" alt="A BayesChat conversation on iPhone: a question about AAPL, a collapsible reasoning block, two MCP tool calls and a streamed answer in Markdown">
+  <img src="docs/screenshots/02-byok-providers.webp" width="240" alt="The provider picker on iPhone listing OpenAI-compatible, OpenRouter, OpenAI, Anthropic, Google Gemini, Mistral, xAI, Groq, DeepSeek and Fireworks AI">
+  <img src="docs/screenshots/03-chat-presets.webp" width="240" alt="The new-chat screen with three Chat Presets — Research, Daily Talk and Translator — above the composer">
 </p>
 
 <p align="center"><sub><b>A private AI chat workspace</b> &nbsp;·&nbsp; <b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
 
 <p align="center">
-  <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
-  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">
-  <img src="docs/screenshots/06-markdown-latex.webp" width="240">
+  <img src="docs/screenshots/04-mcp-add-server.webp" width="240" alt="Adding a remote MCP server: name, URL, bearer-token authentication, then Validate and Fetch Tools returning a connected state">
+  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240" alt="An MCP tool call expanded inline in the conversation, showing its arguments, latency, token delta and JSON result">
+  <img src="docs/screenshots/06-markdown-latex.webp" width="240" alt="A reply rendering LaTeX math, a table and syntax-highlighted code inside the transcript">
 </p>
 
 <p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
 
 <p align="center">
-  <img src="docs/screenshots/07-parameters.webp" width="240">
-  <img src="docs/screenshots/08-themes-sepia.webp" width="240">
-  <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">
+  <img src="docs/screenshots/07-parameters.webp" width="240" alt="Session parameters on iPhone: reasoning effort, temperature, top K, max tokens, penalties and seed">
+  <img src="docs/screenshots/08-themes-sepia.webp" width="240" alt="The Sepia transcript theme applied to a conversation about a stock">
+  <img src="docs/screenshots/09-background-dynamic-island.webp" width="240" alt="A background answer still running, shown as a Live Activity in the Dynamic Island">
 </p>
 
 <p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b> &nbsp;·&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
@@ -185,12 +191,39 @@ The product promise is verifiable, not just stated.
 - The model does the thinking. BayesChat does not proxy, resell or route your
   requests through anyone.
 
+## FAQ
+
+**Is BayesChat free?**<br>
+There is a free tier with message and provider limits. Pro is a one-time $14.99
+purchase and unlocks unlimited messages and providers, Chat Presets, MCP tools,
+memory, custom prompts, advanced parameters and batch export.
+
+**Does BayesChat store my chats or API keys?**<br>
+No account, no sync server, no analytics SDK. Conversations and presets are local
+to the app, API keys and MCP credentials live in the iOS Keychain, and the privacy
+manifest declares no collected data types.
+
+**Can I use local models such as Ollama on my iPhone?**<br>
+Yes — point a provider at your machine's OpenAI-compatible endpoint (Ollama, LM
+Studio or llama.cpp server) on the same network. Ollama's `keep_alive` is handled
+so the model stays warm between turns.
+
+**Does it work on iPad, Android or the Mac?**<br>
+iPhone and iPad, one app, iOS or iPadOS 17 and later. There is no Android, Mac or
+web version.
+
+**Which providers does it support?**<br>
+OpenAI (Chat Completions and Responses), Anthropic Messages, Google Gemini,
+OpenRouter, and any OpenAI-compatible endpoint, with per-provider custom base URLs
+and headers.
+
 ## Support
 
 - **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
 - **Email:** <bayeschat@gmail.com>, for anything you'd rather not post publicly
 - **Privacy policy:** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) is the canonical page ([why this repo only links to it](docs/privacy.md))
 - **What changed in each release:** [CHANGELOG.md](CHANGELOG.md)
+- **How it compares:** [BYOK AI chat clients for iOS compared](https://bayeschat.xyz/blog/posts/2026-09-18-best-byok-ai-chat-clients-ios.html)
 
 When reporting a problem, please include the app version, your device model, the
 iOS or iPadOS version, the provider and model you were using, and whether MCP was
