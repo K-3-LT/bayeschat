@@ -1,13 +1,34 @@
-# BayesChat
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/icon-dark.png">
+    <img src="docs/brand/icon.png" width="104" height="104" alt="BayesChat app icon">
+  </picture>
+</p>
+
+<h1 align="center">BayesChat</h1>
+
+<p align="center"><b>Private iOS AI chat: BYOK, MCP, memory and presets — all on your device.</b></p>
+
+<p align="center">
+  <img src="docs/badges/ios.svg" alt="iOS 17 or later">
+  <img src="docs/badges/device.svg" alt="Runs on iPhone and iPad">
+  <img src="docs/badges/languages.svg" alt="22 languages">
+  <img src="docs/badges/pro.svg" alt="Pro is a one-time $14.99 purchase">
+  <img src="docs/badges/version.svg" alt="Version 1.1.5, build 48">
+</p>
+
+<p align="center">
+  <a href="https://apps.apple.com/app/id6777948055"><img src="docs/brand/app-store.svg" height="40" alt="Download on the App Store"></a>
+  &nbsp;&nbsp;
+  <a href="https://bayeschat.xyz"><img src="docs/badges/website.svg" height="40" alt="bayeschat.xyz"></a>
+</p>
+
+<p align="center">
+  <a href="docs/">Docs</a> &nbsp;·&nbsp; <a href="#screenshots">Screenshots</a> &nbsp;·&nbsp; <a href="CHANGELOG.md">Changelog</a> &nbsp;·&nbsp; <a href="#support">Support</a>
+</p>
 
 **The latest BayesChat news, documentation and release notes live here** — including
 the full changelog of what shipped in each version.
-
-**Private iOS AI chat: BYOK, MCP, memory and presets — all on your device.**
-
-`iOS 17+` · `iPhone & iPad` · `22 languages` · [App Store](https://apps.apple.com/app/id6777948055) · [Website](https://bayeschat.xyz)
-
-[Docs](docs/) · [Screenshots](#screenshots) · [Changelog](CHANGELOG.md) · [Support](#support)
 
 ---
 
