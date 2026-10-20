@@ -30,8 +30,7 @@
   <a href="#support"><code>Support</code></a>
 </p>
 
-**BayesChat news and documentation live in this repo** — with a full changelog
-for every release.
+**The official BayesChat repo** — news, docs and a changelog for every release.
 
 ---
 
