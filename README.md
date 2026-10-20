@@ -1,6 +1,6 @@
 # BayesChat
 
-**The latest BayesChat news, documentation and release notes live here** — including  
+**The latest BayesChat news, documentation and release notes live here** — including
 the full changelog of what shipped in each version.
 
 **Private iOS AI chat: BYOK, MCP, memory and presets — on your device.**
@@ -13,84 +13,84 @@ the full changelog of what shipped in each version.
 
 ## BYOK: any provider, any endpoint
 
-Point BayesChat at whatever you already pay for, and manage it from one place.  
+Point BayesChat at whatever you already pay for, and manage it from one place.
 Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
 
-- **OpenAI** (Chat Completions and the Responses API), **Anthropic** (Messages),  
+- **OpenAI** (Chat Completions and the Responses API), **Anthropic** (Messages),
   **Google Gemini**, **OpenRouter**, plus any **OpenAI-compatible** endpoint
 - **Custom base URLs**, with the protocol detected from the URL you paste
-- **Local runtimes** — Ollama, LM Studio, llama.cpp server — including Ollama's  
+- **Local runtimes** — Ollama, LM Studio, llama.cpp server — including Ollama's
   own `keep_alive` handling so your model stays warm between turns
-- **Per-provider custom headers**, with `{session_id}` and `{model_id}` placeholders.  
-  This is what makes multi-protocol gateways usable: point a provider at OpenCode Go  
-  (`https://opencode.ai/zen/go/v1`) or OpenCode Zen (`https://opencode.ai/zen/v1`), add  
-  `x-opencode-session: {session_id}` once, and every conversation gets its own stable  
-  session id. Each model on that gateway is then routed to the protocol it actually  
-  speaks — Chat Completions, Anthropic Messages or OpenAI Responses — instead of one  
+- **Per-provider custom headers**, with `{session_id}` and `{model_id}` placeholders.
+  This is what makes multi-protocol gateways usable: point a provider at OpenCode Go
+  (`https://opencode.ai/zen/go/v1`) or OpenCode Zen (`https://opencode.ai/zen/v1`), add
+  `x-opencode-session: {session_id}` once, and every conversation gets its own stable
+  session id. Each model on that gateway is then routed to the protocol it actually
+  speaks — Chat Completions, Anthropic Messages or OpenAI Responses — instead of one
   wire format being forced on the whole endpoint.
-- **Live model lists** — the picker shows what your key can actually call, not a  
+- **Live model lists** — the picker shows what your key can actually call, not a
   hardcoded table
 - Keys live in the **Keychain**, never in plain files
 
 ## MCP: real tools on the phone
 
-Most MCP tooling stops at the desktop. BayesChat connects to **remote MCP servers  
+Most MCP tooling stops at the desktop. BayesChat connects to **remote MCP servers
 over Streamable HTTP** and runs their tools inside the conversation.
 
-- Add a server, choose **bearer token** or **custom headers**, then **Validate &  
+- Add a server, choose **bearer token** or **custom headers**, then **Validate &
   Fetch Tools** — you see the connection succeed and the tool list arrive
-- **Toggle tools individually**, so a server can expose twenty and the model only  
+- **Toggle tools individually**, so a server can expose twenty and the model only
   gets the three you want
-- Every call renders **inline** with its arguments, latency, token delta and  
+- Every call renders **inline** with its arguments, latency, token delta and
   result — expandable, copyable, cancellable
-- **Concurrent calls** within a round instead of a queue, **retry in place** when  
-  one fails, and a **Continue** prompt when a model stops after calling tools  
+- **Concurrent calls** within a round instead of a queue, **retry in place** when
+  one fails, and a **Continue** prompt when a model stops after calling tools
   without writing its final answer
 - Long tool output is truncated intelligently instead of blowing out the context
 
-> iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP  
+> iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
 
 ## Chat Presets: the whole request, saved
 
-A preset is not a saved prompt. It's the entire configuration for one kind of  
+A preset is not a saved prompt. It's the entire configuration for one kind of
 task, switched in one tap.
 
-- **Save the prompt, model, parameters, memory and tools as one reusable preset, then  
-  switch presets in a single tap** — Translator to Research changes everything above  
+- **Save the prompt, model, parameters, memory and tools as one reusable preset, then
+  switch presets in a single tap** — Translator to Research changes everything above
   at once, not just the words of the prompt.
-- Prompt variables such as `{{current_date}}`, `{{current_time}}`, `{{current_weekday}}`,  
+- Prompt variables such as `{{current_date}}`, `{{current_time}}`, `{{current_weekday}}`,
   `{{current_datetime}}`, `{{timezone}}` and `{{model_id}}` are resolved at send time.
 - A preset can inherit your global parameters or override them individually.
 - Each preset has its own icon and description; one can be marked as the default.
-- The composer only shows the parameters that differ from the defaults, so a tuned  
+- The composer only shows the parameters that differ from the defaults, so a tuned
   preset looks different at a glance.
 
 ## Memory: long-term context you can read
 
 Memory is not a black box that quietly rewrites your prompt.
 
-- Learned from your conversations, then **merged under explicit capacity and  
+- Learned from your conversations, then **merged under explicit capacity and
   protection rules** instead of blindly appended
-- Every entry is **visible, editable and deletable** — you can fix what it got  
+- Every entry is **visible, editable and deletable** — you can fix what it got
   wrong, or delete a single fact without wiping everything
-- Shown as a **pill in the composer** so you always know whether memory is active  
+- Shown as a **pill in the composer** so you always know whether memory is active
   for this conversation
-- Settles **inside the same run as the answer**, so a finished reply means the  
+- Settles **inside the same run as the answer**, so a finished reply means the
   memory is finished too
 
 ## Background tasks: leave the app, nothing stops
 
-Long answers and multi-step tool runs **keep going after you send the app to the  
-background**, with progress on the **Lock Screen and in the Dynamic Island** —  
+Long answers and multi-step tool runs **keep going after you send the app to the
+background**, with progress on the **Lock Screen and in the Dynamic Island** —
 including a cancel control.
 
-- Built on iOS 26's continued-processing API, so the network stays alive instead  
+- Built on iOS 26's continued-processing API, so the network stays alive instead
   of being suspended
 - **Live Activity** shows what's running and how far along it is
-- **Opt-in notification** when it finishes; tapping it opens the conversation  
+- **Opt-in notification** when it finishes; tapping it opens the conversation
   that finished
-- Conversation title and memory updates are finished **inside the same background  
+- Conversation title and memory updates are finished **inside the same background
   run**, so nothing is half-written when you come back
 - On older iOS versions the app falls back to the normal background grace period
 
@@ -99,11 +99,11 @@ including a cancel control.
 The product promise is verifiable, not just stated.
 
 - **No account, no sign-up, no identity** — nothing to log in to
-- Requests go to exactly two kinds of hosts: the provider endpoint you configured,  
+- Requests go to exactly two kinds of hosts: the provider endpoint you configured,
   and the MCP servers you added. Nothing else
 - Conversations, presets and memory are stored **locally on the device**
 - API keys and MCP credentials in the **Keychain**
-- **No tracking, no analytics SDK, no third-party telemetry** — the app's privacy  
+- **No tracking, no analytics SDK, no third-party telemetry** — the app's privacy
   manifest declares no collected data types and no tracking domains
 - Export and back up your data and take it with you, without asking anyone
 
@@ -111,26 +111,26 @@ The product promise is verifiable, not just stated.
 
 ## Screenshots
 
-<p align="center">  
-  <img src="docs/screenshots/01-hero-privacy.webp" width="240">  
-  <img src="docs/screenshots/02-byok-providers.webp" width="240">  
-  <img src="docs/screenshots/03-chat-presets.webp" width="240">  
+<p align="center">
+  <img src="docs/screenshots/01-hero-privacy.webp" width="240">
+  <img src="docs/screenshots/02-byok-providers.webp" width="240">
+  <img src="docs/screenshots/03-chat-presets.webp" width="240">
 </p>
 
 <p align="center"><sub><b>A private AI chat workspace</b> \&nbsp;·\&nbsp; <b>Any provider, local or cloud</b> \&nbsp;·\&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
 
-<p align="center">  
-  <img src="docs/screenshots/04-mcp-add-server.webp" width="240">  
-  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">  
-  <img src="docs/screenshots/06-markdown-latex.webp" width="240">  
+<p align="center">
+  <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
+  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">
+  <img src="docs/screenshots/06-markdown-latex.webp" width="240">
 </p>
 
 <p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> \&nbsp;·\&nbsp; <b>MCP tool calls, fully expanded</b> \&nbsp;·\&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
 
-<p align="center">  
-  <img src="docs/screenshots/07-parameters.webp" width="240">  
-  <img src="docs/screenshots/08-themes-sepia.webp" width="240">  
-  <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">  
+<p align="center">
+  <img src="docs/screenshots/07-parameters.webp" width="240">
+  <img src="docs/screenshots/08-themes-sepia.webp" width="240">
+  <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">
 </p>
 
 <p align="center"><sub><b>Sampling controls, per preset</b> \&nbsp;·\&nbsp; <b>Themes and typography</b> \&nbsp;·\&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
@@ -154,11 +154,11 @@ The product promise is verifiable, not just stated.
 
 ## Requirements and limits
 
-- **iOS / iPadOS 17 or later.** Background continuations and the Live Activity  
+- **iOS / iPadOS 17 or later.** Background continuations and the Live Activity
   require **iOS 26**.
-- **Remote MCP servers only.** iOS cannot spawn local processes, so `stdio`  
+- **Remote MCP servers only.** iOS cannot spawn local processes, so `stdio`
   servers are not supported by any iOS client — including this one.
-- The model does the thinking. BayesChat does not proxy, resell or route your  
+- The model does the thinking. BayesChat does not proxy, resell or route your
   requests through anyone.
 
 ## Documentation
@@ -179,6 +179,6 @@ The product promise is verifiable, not just stated.
 - **Privacy policy:** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) is the canonical page ([why this repo only links to it](docs/privacy.md))
 - **What changed in each release:** [CHANGELOG.md](CHANGELOG.md)
 
-When reporting a problem, please include the app version, your device model, the  
-iOS or iPadOS version, the provider and model you were using, and whether MCP was  
+When reporting a problem, please include the app version, your device model, the
+iOS or iPadOS version, the provider and model you were using, and whether MCP was
 involved. Those five details turn a "it doesn't work" into something fixable.
