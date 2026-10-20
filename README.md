@@ -141,7 +141,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/03-chat-presets.webp" width="240">
 </p>
 
-<p align="center"><sub><b>A private AI chat workspace</b> \&nbsp;·\&nbsp; <b>Any provider, local or cloud</b> \&nbsp;·\&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
+<p align="center"><sub><b>A private AI chat workspace</b> &nbsp;·&nbsp; <b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
 
 <p align="center">
   <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
@@ -149,7 +149,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/06-markdown-latex.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> \&nbsp;·\&nbsp; <b>MCP tool calls, fully expanded</b> \&nbsp;·\&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
+<p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
 
 <p align="center">
   <img src="docs/screenshots/07-parameters.webp" width="240">
@@ -157,7 +157,7 @@ The product promise is verifiable, not just stated.
   <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Sampling controls, per preset</b> \&nbsp;·\&nbsp; <b>Themes and typography</b> \&nbsp;·\&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
+<p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b> &nbsp;·&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
 
 ## Everything else
 
