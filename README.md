@@ -161,17 +161,6 @@ The product promise is verifiable, not just stated.
 - The model does the thinking. BayesChat does not proxy, resell or route your
   requests through anyone.
 
-## Documentation
-
-|                                                          |                                                       |
-| -------------------------------------------------------- | ----------------------------------------------------- |
-| [Can you use MCP on an iPhone?](docs/01-mcp-on-ios.md)   | Why stdio can't work on iOS, and what does            |
-| [Connecting a remote MCP server](docs/02-connect-mcp.md) | Bearer tokens, custom headers, tool toggles           |
-| [Presets and prompt templates](docs/03-presets.md)       | What to store per task, with three ready-made recipes |
-| [BYOK, explained](docs/04-byok.md)                       | What bringing your own key actually changes           |
-| [MCP troubleshooting](docs/05-troubleshooting.md)        | The eight reasons a server won't connect              |
-| [Background tasks on iOS](docs/06-background.md)         | What the OS allows, and when                          |
-
 ## Support
 
 - **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
