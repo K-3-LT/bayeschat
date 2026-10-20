@@ -24,7 +24,10 @@
 </p>
 
 <p align="center">
-  <a href="docs/">Docs</a> &nbsp;·&nbsp; <a href="#screenshots">Screenshots</a> &nbsp;·&nbsp; <a href="CHANGELOG.md">Changelog</a> &nbsp;·&nbsp; <a href="#support">Support</a>
+  <a href="docs/"><code>Docs</code></a> &nbsp;
+  <a href="#screenshots"><code>Screenshots</code></a> &nbsp;
+  <a href="CHANGELOG.md"><code>Changelog</code></a> &nbsp;
+  <a href="#support"><code>Support</code></a>
 </p>
 
 **The latest BayesChat news, documentation and release notes live here** — including
