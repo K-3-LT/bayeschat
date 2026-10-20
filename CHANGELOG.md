@@ -9,7 +9,9 @@ public support changelog are derived from it rather than written separately. The
 format rules live in the header of `scripts/check-changelog-format.mjs`, and the
 release and publish steps in `AGENTS.md`.
 
-## [Unreleased]
+## [1.1.5] - 2026-10-20
+
+<!-- build 48 | since 1.1.4 (e87ee13) | e87ee13..bbe61ef | 6 commits -->
 
 ### New Features
 
