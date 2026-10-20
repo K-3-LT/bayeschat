@@ -62,7 +62,7 @@ Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
   hardcoded table
 - Keys live in the **Keychain**, never in plain files
 
-## MCP: real tools on the phone
+## MCP: real tools, inside the conversation
 
 Most MCP tooling stops at the desktop. BayesChat connects to **remote MCP servers
 over Streamable HTTP** and runs their tools inside the conversation.
@@ -81,7 +81,7 @@ over Streamable HTTP** and runs their tools inside the conversation.
 > iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
 
-## Chat Presets: the whole request, saved
+## Chat Presets: the whole setup, saved
 
 A preset is not a saved prompt. It's the entire configuration for one kind of
 task, switched in one tap.
@@ -96,7 +96,7 @@ task, switched in one tap.
 - The composer only shows the parameters that differ from the defaults, so a tuned
   preset looks different at a glance.
 
-## Memory: long-term context you can read
+## Memory: it remembers you, across conversations
 
 Memory is not a black box that quietly rewrites your prompt.
 
@@ -124,7 +124,7 @@ including a cancel control.
   run**, so nothing is half-written when you come back
 - On older iOS versions the app falls back to the normal background grace period
 
-## Privacy: nothing leaves the device
+## Privacy: your data stays on your device
 
 The product promise is verifiable, not just stated.
 
