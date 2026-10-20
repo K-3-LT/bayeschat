@@ -163,11 +163,6 @@ The product promise is verifiable, not just stated.
 
 ## Support
 
-> [!NOTE]
-> The older [`bayeschat-creator/bayeschat-support`](https://github.com/bayeschat-creator/bayeschat-support)
-> repository is being retired. This repository replaces it — the changelog, the privacy
-> pointer and the issue tracker all live here now.
-
 - **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
 - **Email:** <bayeschat@gmail.com>, for anything you'd rather not post publicly
 - **Privacy policy:** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) is the canonical page ([why this repo only links to it](docs/privacy.md))
