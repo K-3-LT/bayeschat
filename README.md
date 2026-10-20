@@ -1,8 +1,9 @@
 # BayesChat
 
-**Your own API key. Your own MCP tools. Your own settings. On your phone.**
+**The latest BayesChat news, documentation and release notes live here** — including
+the full changelog of what shipped in each version.
 
-No account. No analytics. No server in the middle.
+**Private iOS AI chat: BYOK, MCP, memory and presets — on your device.**
 
 `iOS 17+` · `iPhone & iPad` · `22 languages` · [App Store](https://apps.apple.com/app/id6777948055) · [Website](https://bayeschat.xyz)
 
@@ -18,8 +19,13 @@ Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
 - **Custom base URLs**, with the protocol detected from the URL you paste
 - **Local runtimes** — Ollama, LM Studio, llama.cpp server — including Ollama's
   own `keep_alive` handling so your model stays warm between turns
-- **Per-provider custom headers**, including `{session_id}` and `{model_id}`
-  placeholders for gateways that need them
+- **Per-provider custom headers**, with `{session_id}` and `{model_id}` placeholders.
+  This is what makes multi-protocol gateways usable: point a provider at OpenCode Go
+  (`https://opencode.ai/zen/go/v1`) or OpenCode Zen (`https://opencode.ai/zen/v1`), add
+  `x-opencode-session: {session_id}` once, and every conversation gets its own stable
+  session id. Each model on that gateway is then routed to the protocol it actually
+  speaks — Chat Completions, Anthropic Messages or OpenAI Responses — instead of one
+  wire format being forced on the whole endpoint.
 - **Live model lists** — the picker shows what your key can actually call, not a
   hardcoded table
 - Keys live in the **Keychain**, never in plain files
@@ -48,17 +54,15 @@ over Streamable HTTP** and runs their tools inside the conversation.
 A preset is not a saved prompt. It's the entire configuration for one kind of
 task, switched in one tap.
 
-- Stores **provider + model + system prompt template + every sampling parameter**
-  (temperature, top-p, top-k, min-p, max tokens, penalties, seed, stop sequences,
-  reasoning effort, and raw extra JSON for provider-specific fields)
-- Stores **which MCP tools are allowed** and **whether long-term memory is on** —
-  so switching tasks also switches the tool permissions and the memory rule
-- Presets **inherit your global parameters or override them** individually
-- Reusable **prompt templates** expand `{{current_date}}`, `{{current_time}}`,
-  `{{current_weekday}}`, `{{current_datetime}}`, `{{timezone}}`, `{{model_id}}`
-- Per-preset **icon and description**, a default preset, and last-used ordering
-- The composer **only shows the parameters that differ from the defaults**, so a
-  tuned preset looks different at a glance
+- **Save the prompt, model, parameters, memory and tools as one reusable preset, then
+  switch presets in a single tap** — Translator to Research changes everything above
+  at once, not just the words of the prompt.
+- Prompt variables such as `{{current_date}}`, `{{current_time}}`, `{{current_weekday}}`,
+  `{{current_datetime}}`, `{{timezone}}` and `{{model_id}}` are resolved at send time.
+- A preset can inherit your global parameters or override them individually.
+- Each preset has its own icon and description; one can be marked as the default.
+- The composer only shows the parameters that differ from the defaults, so a tuned
+  preset looks different at a glance.
 
 ## Memory: long-term context you can read
 
@@ -73,7 +77,7 @@ Memory is not a black box that quietly rewrites your prompt.
 - Settles **inside the same run as the answer**, so a finished reply means the
   memory is finished too
 
-## Background answers: leave the app, nothing stops
+## Background tasks: leave the app, nothing stops
 
 Long answers and multi-step tool runs **keep going after you send the app to the
 background**, with progress on the **Lock Screen and in the Dynamic Island** —
@@ -134,6 +138,7 @@ The product promise is verifiable, not just stated.
 | | |
 |---|---|
 | **Reasoning models** | `<thinking>` tags and `reasoning` / `thinking` fields parsed and rendered as their own block, collapsible and copyable |
+| **Parameters** | Temperature · Top P · Top K · Min P · Max Tokens · reasoning effort (low / medium / high) · penalties · seed · stop sequences · raw provider JSON — every knob your provider exposes, no config files |
 | **Rendering** | Markdown, KaTeX math, syntax-highlighted code, tables — with a steady typewriter reveal and lighter transcript typography |
 | **Attachments** | Images, video and documents; tap a photo to open the **original resolution**, not the compressed preview |
 | **Streaming detail** | Live `tok/s`, latency and up/down token counts under every reply |
@@ -163,14 +168,10 @@ The product promise is verifiable, not just stated.
 | [Presets and prompt templates](docs/03-presets.md) | What to store per task, with three ready-made recipes |
 | [BYOK, explained](docs/04-byok.md) | What bringing your own key actually changes |
 | [MCP troubleshooting](docs/05-troubleshooting.md) | The eight reasons a server won't connect |
-| [Background answers on iOS](docs/06-background.md) | What the OS allows, and when |
+| [Background tasks on iOS](docs/06-background.md) | What the OS allows, and when |
 
 ## Support
 
 - Open an issue here for bugs and questions
 - [Privacy policy](https://bayeschat.xyz/privacy.html) · [Changelog](CHANGELOG.md)
 
----
-
-<sub>This repository is the public home for BayesChat: documentation, screenshots and
-release notes. The app itself is closed source and distributed through the App Store.</sub>
