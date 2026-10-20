@@ -3,7 +3,7 @@
 **The latest BayesChat news, documentation and release notes live here** — including
 the full changelog of what shipped in each version.
 
-**Private iOS AI chat: BYOK, MCP, memory and presets — on your device.**
+**Private iOS AI chat: BYOK, MCP, memory and presets — all on your device.**
 
 `iOS 17+` · `iPhone & iPad` · `22 languages` · [App Store](https://apps.apple.com/app/id6777948055) · [Website](https://bayeschat.xyz)
 
