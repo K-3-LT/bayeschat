@@ -6,8 +6,6 @@ No account. No analytics. No server in the middle.
 
 `iOS 17+` · `iPhone & iPad` · `22 languages` · [App Store](https://apps.apple.com/app/id6777948055) · [Website](https://bayeschat.xyz)
 
-<img src="docs/screenshots/01-hero-privacy.webp" width="880" alt="BayesChat — a private AI chat workspace with BYOK, MCP tools and chat presets">
-
 ---
 
 ## BYOK: any provider, any endpoint
@@ -110,26 +108,27 @@ The product promise is verifiable, not just stated.
 ## Screenshots
 
 <p align="center">
+  <img src="docs/screenshots/01-hero-privacy.webp" width="240">
   <img src="docs/screenshots/02-byok-providers.webp" width="240">
-  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">
   <img src="docs/screenshots/03-chat-presets.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Presets that store prompts, models, parameters and tools</b></sub></p>
+<p align="center"><sub><b>A private AI chat workspace</b> &nbsp;·&nbsp; <b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>Presets store prompts, models, parameters and tools</b></sub></p>
 
 <p align="center">
   <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
+  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">
   <img src="docs/screenshots/06-markdown-latex.webp" width="240">
-  <img src="docs/screenshots/07-parameters.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Add a remote MCP server, fetch its tools</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b> &nbsp;·&nbsp; <b>Sampling controls, per preset</b></sub></p>
+<p align="center"><sub><b>Add a remote MCP server and fetch its tools</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b></sub></p>
 
 <p align="center">
+  <img src="docs/screenshots/07-parameters.webp" width="240">
   <img src="docs/screenshots/08-themes-sepia.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Themes and typography</b></sub></p>
+<p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b></sub></p>
 
 ## Everything else
 
