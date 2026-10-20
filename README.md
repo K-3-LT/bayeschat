@@ -6,7 +6,7 @@ No account. No analytics. No server in the middle.
 
 `iOS 17+` · `iPhone & iPad` · `22 languages` · [App Store](https://apps.apple.com/app/id6777948055) · [Website](https://bayeschat.xyz)
 
-<img src="docs/screenshots/hero-three-phones.webp" width="880" alt="BayesChat: any provider, chat presets, and MCP tools on iPhone">
+<img src="docs/screenshots/01-hero-privacy.webp" width="880" alt="BayesChat — a private AI chat workspace with BYOK, MCP tools and chat presets">
 
 ---
 
@@ -42,7 +42,7 @@ over Streamable HTTP** and runs their tools inside the conversation.
   without writing its final answer
 - Long tool output is truncated intelligently instead of blowing out the context
 
-<img src="docs/screenshots/mcp-add-server.webp" width="300" alt="Adding a remote MCP server with a bearer token"> <img src="docs/screenshots/mcp-tool-call.webp" width="300" alt="Two MCP servers called in sequence inside one answer">
+<img src="docs/screenshots/05-mcp-tool-call.webp" width="320" alt="A real conversation with every MCP tool call expanded">
 
 > iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
@@ -63,8 +63,6 @@ task, switched in one tap.
 - Per-preset **icon and description**, a default preset, and last-used ordering
 - The composer **only shows the parameters that differ from the defaults**, so a
   tuned preset looks different at a glance
-
-<img src="docs/screenshots/chat-presets.webp" width="300" alt="Chat Presets on iPhone">
 
 ## Memory: long-term context you can read
 
@@ -94,7 +92,7 @@ including a cancel control.
   run**, so nothing is half-written when you come back
 - On older iOS versions the app falls back to the normal background grace period
 
-<img src="docs/screenshots/background-dynamic-island.webp" width="360" alt="Live Activity in the Dynamic Island while a generation continues in the background">
+<img src="docs/screenshots/09-background-dynamic-island.webp" width="360" alt="Live Activity in the Dynamic Island while a generation continues in the background">
 
 ## Privacy: nothing leaves the device
 
@@ -115,10 +113,10 @@ The product promise is verifiable, not just stated.
 
 | | | |
 |---|---|---|
-| <img src="docs/screenshots/byok-providers.webp" width="240"> | <img src="docs/screenshots/chat-presets.webp" width="240"> | <img src="docs/screenshots/markdown-latex.webp" width="240"> |
-| **Any provider, local or cloud** | **Presets with tools and memory** | **Markdown, LaTeX, code, tables** |
-| <img src="docs/screenshots/parameters.webp" width="240"> | <img src="docs/screenshots/themes-sepia.webp" width="240"> | <img src="docs/screenshots/mcp-tool-call.webp" width="240"> |
-| **Sampling controls** | **Themes and typography** | **MCP tool calls in detail** |
+| <img src="docs/screenshots/02-byok-providers.webp" width="240"> | <img src="docs/screenshots/03-chat-presets.webp" width="240"> | <img src="docs/screenshots/04-mcp-add-server.webp" width="240"> |
+| **Any provider, local or cloud** | **Presets store prompts, models, parameters and tools** | **Add a remote MCP server, fetch its tools** |
+| <img src="docs/screenshots/06-markdown-latex.webp" width="240"> | <img src="docs/screenshots/07-parameters.webp" width="240"> | <img src="docs/screenshots/08-themes-sepia.webp" width="240"> |
+| **Markdown, LaTeX, code and tables** | **Sampling controls, per preset** | **Themes and typography** |
 
 ## Everything else
 
