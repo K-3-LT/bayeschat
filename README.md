@@ -35,12 +35,6 @@ for every release.
 
 ---
 
-BayesChat is an AI chat client for iPhone and iPad. You bring your own API key,
-point it at any OpenAI- or Anthropic-compatible provider — a cloud API or a model
-running on your own machine — and add MCP servers when a task needs tools. Keys,
-conversations and memory stay on the device; there is no account and no server in
-between.
-
 ## BYOK: any provider, local or cloud
 
 Point BayesChat at whatever you already pay for, and manage it from one place.
