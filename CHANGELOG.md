@@ -1,13 +1,6 @@
 # Changelog
 
-All notable changes to BayesChat are recorded in this file. The format follows the
-style used by Pi: a `[version] - date` heading, a fixed section vocabulary, and one
-entry per change with the commits it came from.
-
-This file is the single source of truth; the App Store "What's New" text and the
-public support changelog are derived from it rather than written separately. The
-format rules live in the header of `scripts/check-changelog-format.mjs`, and the
-release and publish steps in `AGENTS.md`.
+All notable changes to BayesChat are recorded in this file.
 
 ## [1.1.5] - 2026-10-20
 
