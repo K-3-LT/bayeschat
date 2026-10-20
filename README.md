@@ -172,6 +172,12 @@ The product promise is verifiable, not just stated.
 
 ## Support
 
-- Open an issue here for bugs and questions
-- [Privacy policy](https://bayeschat.xyz/privacy.html) · [Changelog](CHANGELOG.md)
+- **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
+- **Email:** bayeschat@gmail.com, for anything you'd rather not post publicly
+- **Privacy policy:** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) is the canonical page ([why this repo only links to it](docs/privacy.md))
+- **What changed in each release:** [CHANGELOG.md](CHANGELOG.md)
+
+When reporting a problem, please include the app version, your device model, the
+iOS or iPadOS version, the provider and model you were using, and whether MCP was
+involved. Those five details turn a "it doesn't work" into something fixable.
 
