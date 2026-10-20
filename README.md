@@ -160,15 +160,16 @@ The product promise is verifiable, not just stated.
 
 ## Everything else
 
-|                          |                                                                                                                                                                                                       |
+| **Feature**              | **What it does**                                                                                                                                                                                      |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Reasoning models**     | `<thinking>` tags and `reasoning` / `thinking` fields parsed and rendered as their own block, collapsible and copyable                                                                                |
+| **Reasoning and tools**  | `<thinking>` tags and `reasoning` / `thinking` fields parsed into their own collapsible block; tool calls expand to their arguments, latency, token delta and JSON result — both copyable             |
 | **Parameters**           | Temperature · Top P · Top K · Min P · Max Tokens · reasoning effort (low / medium / high) · penalties · seed · stop sequences · raw provider JSON — every knob your provider exposes, no config files |
-| **Rendering**            | Markdown, KaTeX math, syntax-highlighted code, tables — with a steady typewriter reveal and lighter transcript typography                                                                             |
+| **Rendering**            | Markdown, KaTeX math, syntax-highlighted code and tables in one transcript surface that repaints only the streaming block — long answers stay smooth, with a typewriter reveal and lighter typography |
 | **Attachments**          | Images, video and documents; tap a photo to open the **original resolution**, not the compressed preview                                                                                              |
-| **Streaming detail**     | Live `tok/s`, latency and up/down token counts under every reply                                                                                                                                      |
+| **Usage**                | Live `tok/s`, latency and up/down token counts under every reply                                                                                                                                      |
 | **Composer**             | Auto-grows with your text, expands into a full-screen editor, submits with the keyboard Send key, with parameter / reasoning / memory / preset pills in one row                                       |
-| **Conversation control** | AI-generated titles, edit and regenerate, long-press to edit / copy / delete, pinned message that holds still while cards expand                                                                      |
+| **Auto titles**          | The model writes the title of every conversation from the conversation itself                                                                                                                         |
+| **Message actions**      | Edit and regenerate replies, long-press any message to edit / copy / delete, and pin one so it holds still while reasoning and tool cards expand                                                      |
 | **Navigation**           | Slide-out history drawer from the left edge, jump-to-bottom that appears only when it's needed                                                                                                        |
 | **Export**               | Batch export conversations to **PDF or HTML** (zip), plus a full local backup                                                                                                                         |
 | **Appearance**           | Light and dark, six transcript themes including sepia, adjustable typography                                                                                                                          |
