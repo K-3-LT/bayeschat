@@ -42,8 +42,6 @@ over Streamable HTTP** and runs their tools inside the conversation.
   without writing its final answer
 - Long tool output is truncated intelligently instead of blowing out the context
 
-<img src="docs/screenshots/05-mcp-tool-call.webp" width="320" alt="A real conversation with every MCP tool call expanded">
-
 > iOS cannot spawn child processes, so **stdio servers don't apply**. Remote HTTP
 > servers do — and that's the whole design.
 
@@ -111,12 +109,27 @@ The product promise is verifiable, not just stated.
 
 ## Screenshots
 
-| | | |
-|---|---|---|
-| <img src="docs/screenshots/02-byok-providers.webp" width="240"> | <img src="docs/screenshots/03-chat-presets.webp" width="240"> | <img src="docs/screenshots/04-mcp-add-server.webp" width="240"> |
-| **Any provider, local or cloud** | **Presets store prompts, models, parameters and tools** | **Add a remote MCP server, fetch its tools** |
-| <img src="docs/screenshots/06-markdown-latex.webp" width="240"> | <img src="docs/screenshots/07-parameters.webp" width="240"> | <img src="docs/screenshots/08-themes-sepia.webp" width="240"> |
-| **Markdown, LaTeX, code and tables** | **Sampling controls, per preset** | **Themes and typography** |
+<p align="center">
+  <img src="docs/screenshots/02-byok-providers.webp" width="240">
+  <img src="docs/screenshots/05-mcp-tool-call.webp" width="240">
+  <img src="docs/screenshots/03-chat-presets.webp" width="240">
+</p>
+
+<p align="center"><sub><b>Any provider, local or cloud</b> &nbsp;·&nbsp; <b>MCP tool calls, fully expanded</b> &nbsp;·&nbsp; <b>Presets that store prompts, models, parameters and tools</b></sub></p>
+
+<p align="center">
+  <img src="docs/screenshots/04-mcp-add-server.webp" width="240">
+  <img src="docs/screenshots/06-markdown-latex.webp" width="240">
+  <img src="docs/screenshots/07-parameters.webp" width="240">
+</p>
+
+<p align="center"><sub><b>Add a remote MCP server, fetch its tools</b> &nbsp;·&nbsp; <b>Markdown, LaTeX, code and tables</b> &nbsp;·&nbsp; <b>Sampling controls, per preset</b></sub></p>
+
+<p align="center">
+  <img src="docs/screenshots/08-themes-sepia.webp" width="240">
+</p>
+
+<p align="center"><sub><b>Themes and typography</b></sub></p>
 
 ## Everything else
 
