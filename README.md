@@ -88,8 +88,6 @@ including a cancel control.
   run**, so nothing is half-written when you come back
 - On older iOS versions the app falls back to the normal background grace period
 
-<img src="docs/screenshots/09-background-dynamic-island.webp" width="360" alt="Live Activity in the Dynamic Island while a generation continues in the background">
-
 ## Privacy: nothing leaves the device
 
 The product promise is verifiable, not just stated.
@@ -126,9 +124,10 @@ The product promise is verifiable, not just stated.
 <p align="center">
   <img src="docs/screenshots/07-parameters.webp" width="240">
   <img src="docs/screenshots/08-themes-sepia.webp" width="240">
+  <img src="docs/screenshots/09-background-dynamic-island.webp" width="240">
 </p>
 
-<p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b></sub></p>
+<p align="center"><sub><b>Sampling controls, per preset</b> &nbsp;·&nbsp; <b>Themes and typography</b> &nbsp;·&nbsp; <b>Answers keep running in the background, live in the Dynamic Island</b></sub></p>
 
 ## Everything else
 
