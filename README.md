@@ -184,32 +184,6 @@ The product promise is verifiable, not just stated.
 - The model does the thinking. BayesChat does not proxy, resell or route your
   requests through anyone.
 
-## FAQ
-
-**Is BayesChat free?**<br>
-There is a free tier with message and provider limits. Pro is a one-time $14.99
-purchase and unlocks unlimited messages and providers, Chat Presets, MCP tools,
-memory, custom prompts, advanced parameters and batch export.
-
-**Does BayesChat store my chats or API keys?**<br>
-No account, no sync server, no analytics SDK. Conversations and presets are local
-to the app, API keys and MCP credentials live in the iOS Keychain, and the privacy
-manifest declares no collected data types.
-
-**Can I use local models such as Ollama on my iPhone?**<br>
-Yes — point a provider at your machine's OpenAI-compatible endpoint (Ollama, LM
-Studio or llama.cpp server) on the same network. Ollama's `keep_alive` is handled
-so the model stays warm between turns.
-
-**Does it work on iPad, Android or the Mac?**<br>
-iPhone and iPad, one app, iOS or iPadOS 17 and later. There is no Android, Mac or
-web version.
-
-**Which providers does it support?**<br>
-OpenAI (Chat Completions and Responses), Anthropic Messages, Google Gemini,
-OpenRouter, and any OpenAI-compatible endpoint, with per-provider custom base URLs
-and headers.
-
 ## Support
 
 - **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
