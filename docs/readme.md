@@ -19,6 +19,17 @@ from a third-party server every time somebody loads it.
 
 `docs/screenshots/*.webp` are the marketing frames shown further down the README.
 
+## The Chinese README
+
+`README.zh-CN.md` is a full translation of the English README, kept in sync by hand
+rather than generated. It uses the same artwork and the same jump links, and its nav
+row links back to `README.md`. The English README's nav row links to it as
+`简体中文`, so each version can be reached from the other.
+
+It is deliberately not covered by `check-readme.mjs`: that script checks the English
+header's claims and pinned artwork bytes. If the version, price or language count
+changes, update the Chinese README in the same commit.
+
 ## The claims in the badges
 
 Five badges, all of them checkable facts, none of them vanity:
