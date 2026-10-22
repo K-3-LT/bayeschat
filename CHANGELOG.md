@@ -2,6 +2,36 @@
 
 All notable changes to BayesChat are recorded in this file.
 
+## [1.1.6] - 2026-10-22
+
+<!-- build 49 | since 1.1.5 (bbe61ef) | bbe61ef..d565aef | 35 commits -->
+
+### Changed
+
+- Text that contains bold, lists, tables or formulas now streams in with the same steady, softly fading typewriter as plain paragraphs, instead of arriving in small bursts with no fade (2662e77)
+- A completion notification waits until the answer, its AI title and any new memory are all saved, so it no longer arrives while the Lock Screen card still says it is finishing (44148aa)
+- Reply text is drawn with the same glyph weight as the rest of the app, so Chinese prose no longer looks washed out next to the composer (4b13743)
+- Formulas sit at body size and write their Chinese words in the same sans font as the surrounding sentence, instead of a larger serif face (4b13743)
+- Reply text is a shade lighter, and bold text in a paragraph now stands out by weight and ink instead of looking like a second typeface (ec4c3f3)
+- Headings inside a reply step 22 / 20 / 18, so a section label can no longer look lighter than bold text in the sentence above it (ec4c3f3)
+- Exported HTML and PDF always use the light palette, so exporting from a dark-mode device no longer produces a dark page (a3e297c)
+- The exported document's title no longer uses a synthesised bold that smeared Chinese strokes (a3e297c)
+- A finished background run announces itself once: the Lock Screen card plays the completion, and the notification that keeps the record no longer lights up the screen or makes a sound on top of it (44148aa)
+
+### Fixed
+
+- A reply that follows a heading no longer draws its first words at heading size, and any such slip now corrects itself within a fraction of a second instead of waiting for the conversation to be reopened (ad617ca)
+
+- An answer that is still being written no longer flickers when a reasoning block, its text, and a tool call are all on screen (035abe5)
+- A DeepSeek V4 tool round keeps going instead of stopping on an error asking for its reasoning to be passed back, including the rounds where the model thought nothing at all (0ded512)
+- A second message in a DeepSeek V4 conversation with tools no longer gets the same rejection, because the earlier turns keep their thinking (0ded512)
+- The close button on the setup guide and on the chat preset suggestion now dismisses the card instead of leaving it on screen (5185682)
+- A reasoning card that is expanded while it streams no longer opens with a blank line, matching what the same card looks like after reopening the conversation (a4174d8)
+- A table that is still arriving keeps every row it has shown, instead of settling with the header and losing the rows that were mid-paint (7ef513f)
+- A long background run's card keeps its progress climbing through slow tool calls instead of freezing on one percentage, which made iOS treat the job as stalled and end it (2a85e17)
+- An interrupted background run saves its whole turn before iOS suspends the app, so the conversation no longer comes back mid-write (2a85e17)
+- A conversation opened from a notification keeps its jump-to-bottom button wherever you leave it, instead of showing it only above a point in the middle of the chat (6684d3f)
+
 ## [1.1.5] - 2026-10-20
 
 <!-- build 48 | since 1.1.4 (e87ee13) | e87ee13..bbe61ef | 6 commits -->
