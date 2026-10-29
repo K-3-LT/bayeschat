@@ -1,0 +1,29 @@
+name: Provider catalog
+
+# providers.json is what every BayesChat build downloads, so a pull request that
+# touches it is a change to what users install. The validator runs the same
+# rules the app applies to a download.
+
+on:
+  pull_request:
+    paths:
+      - 'providers.json'
+      - 'providers/logos/**'
+      - 'scripts/check-providers.mjs'
+      - 'PROVIDERS.md'
+  push:
+    branches: [main]
+    paths:
+      - 'providers.json'
+      - 'providers/logos/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/check-providers.mjs

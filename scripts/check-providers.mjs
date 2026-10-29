@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Validator for `providers.json` — the provider list the app ships with and also
- * downloads from the support repository.
+ * Validator for `providers.json` — the provider list the app ships with and
+ * downloads from this repository.
  *
- * Exit 0 = the file may be installed by every build that reads this schema.
+ * Exit 0 = the file may be installed by every build that reads schema 3.
  * Exit 1 = violations, each with a path into the file.
  *
  * Usage:
@@ -11,28 +11,25 @@
  *
  * The rules, and why each one exists:
  *
- *  1. Shape. `schemaVersion` is a number this script knows, `brands` holds at
- *     least one row, `updatedAt` says when the set changed.
- *  2. Identity. Brand and preset ids are unique and match [a-z0-9-]+. The id of
- *     a brand is persisted in the user's provider row (`brandLogoName`), so it
- *     can never be renamed — a new id is a new brand.
- *  3. Logos. `hex` is six hex digits, because it tints the letter avatar when a
- *     build has no asset for the brand.
- *  4. Keywords are how an endpoint is recognised. A generic one (`api`, `ai`,
- *     `llm`, `cloud`, `chat`) would claim the whole internet, and a keyword that
- *     is another brand's domain would claim that brand — both are rejected.
- *  5. Hosts belong to one brand. A row may only add hosts, and every host must
- *     point at a brand that exists in the file; nobody may take `api.openai.com`.
- *  6. Presets open an endpoint: `baseURL` is https (or a localhost http), the
- *     protocol and section are ones the app implements, and the brand exists.
- *  7. Ports and dialects are a closed set: `dialect` names a request shape the
- *     app compiles, so a new word there is a code change, not a data change.
- *  8. `minAppVersion` is dotted numbers. Rows are additive only: the app ignores
- *     a row whose `minAppVersion` is above itself, so it can be written today and
- *     used when that version ships.
- *  9. Nothing that is app policy ships as data: `unsupportedHosts` is read from
- *     the bundle, so a change there is ignored by the app. The script still
- *     checks it for shape, and says so in the file's own header.
+ *  1. Shape. `schemaVersion` is 3 and `generatedAt` is a date the app can show.
+ *     A version the app does not know is refused whole.
+ *  2. Size. Between 10 and 200 rows: a catalog that lost almost everything is a
+ *     bad publish, and a runaway list is a different problem.
+ *  3. Identity. Ids are unique, lowercase and boring — they are persisted on the
+ *     user's device and used as file names, so `../etc/passwd` cannot be one.
+ *  4. Endpoints. `baseURL` is https, has a host, and is not a local address. The
+ *     app sends an API key there; plain http and loopback are not acceptable.
+ *  5. Protocol. `openAICompatible` or `anthropic`. A new one is a code change in
+ *     the app, not a row.
+ *  6. Keywords are how a hand-made provider is recognised. They are lowercase
+ *     (the app lowercases what it matches), they cannot be generic words, and no
+ *     two rows may claim the same one.
+ *  7. Hosts are identity: two rows may not share one, or the app would have to
+ *     pick a winner.
+ *  8. Marks. `asset:<id>` may only name the row's own id — nobody borrows an
+ *     existing app asset. A downloadable mark is `providers/logos/<id>.png`: a
+ *     real PNG, small, roughly square, and present in this repository. Absolute
+ *     URLs and `..` are refused, because the app only fetches from this host.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -41,226 +38,203 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const filePath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(root, "providers.json");
 
-const SUPPORTED_SCHEMAS = [1, 2];
-const ID_RE = /^[a-z0-9][a-z0-9-]*$/;
-const HEX_RE = /^[0-9A-Fa-f]{6}$/;
-const VERSION_RE = /^\d+(\.\d+)*$/;
-const PROTOCOLS = new Set(["openAICompatible", "anthropic"]);
-const SECTIONS = new Set(["internationalCloud", "chineseCloud", "localEngines"]);
-const KINDS = new Set(["cloud", "local", "gateway"]);
-const DIALECTS = new Set([
-  "openAI",
-  "openRouter",
-  "deepSeek",
-  "zai",
-  "qwen",
-  "qwenChatTemplate",
-]);
+const SCHEMA = 3;
+const MIN_ROWS = 10;
+const MAX_ROWS = 200;
+const MAX_MARK_BYTES = 512 * 1024;
+const MIN_MARK_SIDE = 16;
+const MAX_MARK_SIDE = 1024;
+const MAX_MARKS = 64;
+const PROTOCOLS = ["openAICompatible", "anthropic"];
+const ID_RE = /^[a-z0-9][a-z0-9._-]{0,39}$/;
 const GENERIC_KEYWORDS = new Set([
-  "api",
-  "ai",
-  "app",
-  "chat",
-  "cloud",
-  "com",
-  "llm",
-  "model",
-  "models",
-  "provider",
-  "server",
-  "www",
+  "api", "ai", "llm", "cloud", "chat", "model", "models", "server", "proxy",
+  "gateway", "completion", "completions", "localhost",
 ]);
 
-const failures = [];
-const fail = (where, message) => failures.push(`${where}: ${message}`);
+const violations = [];
+const report = (where, message) => violations.push(`${where}: ${message}`);
 
-let text;
-try {
-  text = fs.readFileSync(filePath, "utf8");
-} catch (error) {
-  console.error(`check-providers-json: cannot read ${filePath}: ${error.message}`);
+if (!fs.existsSync(filePath)) {
+  console.error(`missing catalog: ${filePath}`);
   process.exit(1);
 }
 
-if (text.includes("\r")) {
-  console.error("check-providers-json: file uses CRLF line endings, use LF");
-  process.exit(1);
-}
-
-let file;
+let catalog;
 try {
-  file = JSON.parse(text);
+  catalog = JSON.parse(fs.readFileSync(filePath, "utf8"));
 } catch (error) {
-  console.error(`check-providers-json: ${path.basename(filePath)} is not valid JSON: ${error.message}`);
+  console.error(`providers.json is not valid JSON: ${error.message}`);
   process.exit(1);
 }
 
 // ── 1. Shape ────────────────────────────────────────────────────────────────
-if (!SUPPORTED_SCHEMAS.includes(file.schemaVersion)) {
-  fail("schemaVersion", `must be one of ${SUPPORTED_SCHEMAS.join(", ")}, got ${JSON.stringify(file.schemaVersion)}`);
+if (catalog.schemaVersion !== SCHEMA) {
+  report("schemaVersion", `must be ${SCHEMA}, found ${catalog.schemaVersion}`);
 }
-if (file.schemaVersion >= 2 && typeof file.updatedAt !== "string") {
-  fail("updatedAt", "schema 2 must say when the row set changed (YYYY-MM-DD)");
-} else if (file.updatedAt !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(file.updatedAt)) {
-  fail("updatedAt", "must be YYYY-MM-DD");
+if (typeof catalog.generatedAt !== "string" || Number.isNaN(Date.parse(catalog.generatedAt))) {
+  report("generatedAt", "must be an ISO 8601 date");
 }
-if (!Array.isArray(file.brands) || file.brands.length === 0) {
-  fail("brands", "must be a non-empty array");
-}
-const brands = Array.isArray(file.brands) ? file.brands : [];
-const presets = Array.isArray(file.presets) ? file.presets : [];
-const engines = Array.isArray(file.engines) ? file.engines : [];
-const hosts = file.hosts && typeof file.hosts === "object" ? file.hosts : {};
-const unsupportedHosts = Array.isArray(file.unsupportedHosts) ? file.unsupportedHosts : [];
-
-// ── 2–4. Brands ─────────────────────────────────────────────────────────────
-const brandIDs = new Set();
-const keywordsOwned = new Map();
-brands.forEach((brand, index) => {
-  const where = `brands[${index}] (${brand?.id ?? "?"})`;
-  if (!brand || typeof brand !== "object") return fail(where, "must be an object");
-  if (typeof brand.id !== "string" || !ID_RE.test(brand.id)) {
-    fail(where, "id must be lowercase letters, digits and dashes");
-  } else if (brandIDs.has(brand.id)) {
-    fail(where, `duplicate brand id "${brand.id}"`);
-  } else {
-    brandIDs.add(brand.id);
-  }
-  if (typeof brand.name !== "string" || brand.name.trim() === "") fail(where, "name is required");
-  if (!HEX_RE.test(String(brand.hex ?? ""))) fail(where, "hex must be six hex digits, e.g. \"412991\"");
-  if (brand.kind !== undefined && !KINDS.has(brand.kind)) {
-    fail(where, `kind must be one of ${[...KINDS].join(", ")}`);
-  }
-  if (brand.dialect !== undefined && !DIALECTS.has(brand.dialect)) {
-    fail(where, `dialect must be one of ${[...DIALECTS].join(", ")} (a new one is a code change)`);
-  }
-  if (brand.minAppVersion !== undefined && !VERSION_RE.test(String(brand.minAppVersion))) {
-    fail(where, "minAppVersion must be dotted numbers, e.g. \"1.1.7\"");
-  }
-  if (brand.homepage !== undefined && !/^https:\/\/\S+$/.test(String(brand.homepage))) {
-    fail(where, "homepage must be an https URL");
-  }
-  if (brand.names !== undefined) {
-    if (typeof brand.names !== "object" || Array.isArray(brand.names)) {
-      fail(where, "names must be an object of language → name");
-    } else {
-      for (const [tag, value] of Object.entries(brand.names)) {
-        if (!/^[a-zA-Z-]+$/.test(tag) || typeof value !== "string" || value.trim() === "") {
-          fail(where, `names["${tag}"] must be a non-empty string under a language tag`);
-        }
-      }
-    }
-  }
-  if (!Array.isArray(brand.keywords) || brand.keywords.length === 0) {
-    fail(where, "keywords must be a non-empty array");
-  } else {
-    for (const keyword of brand.keywords) {
-      const word = String(keyword).toLowerCase();
-      if (word.length < 3) fail(where, `keyword "${keyword}" is too short to be an identity`);
-      if (GENERIC_KEYWORDS.has(word)) fail(where, `keyword "${keyword}" is generic and would claim unrelated endpoints`);
-      const owner = keywordsOwned.get(word);
-      if (owner && owner !== brand.id) {
-        fail(where, `keyword "${keyword}" already belongs to "${owner}"`);
-      } else {
-        keywordsOwned.set(word, brand.id);
-      }
-    }
-  }
-});
-
-// ── 5. Hosts ────────────────────────────────────────────────────────────────
-for (const [host, brandID] of Object.entries(hosts)) {
-  const normalized = String(host).toLowerCase().replace(/^\.+/, "").replace(/\/+$/, "");
-  if (!/^[a-z0-9.-]+\.[a-z]{2,}$/.test(normalized)) fail(`hosts["${host}"]`, "is not a host name");
-  if (!brandIDs.has(brandID)) fail(`hosts["${host}"]`, `points at unknown brand "${brandID}"`);
-}
-
-// ── 6. Presets ──────────────────────────────────────────────────────────────
-const presetIDs = new Set();
-presets.forEach((preset, index) => {
-  const where = `presets[${index}] (${preset?.id ?? "?"})`;
-  if (!preset || typeof preset !== "object") return fail(where, "must be an object");
-  if (typeof preset.id !== "string" || !ID_RE.test(preset.id)) {
-    fail(where, "id must be lowercase letters, digits and dashes");
-  } else if (presetIDs.has(preset.id)) {
-    fail(where, `duplicate preset id "${preset.id}"`);
-  } else {
-    presetIDs.add(preset.id);
-  }
-  if (typeof preset.name !== "string" || preset.name.trim() === "") fail(where, "name is required");
-  if (preset.brand !== undefined && !brandIDs.has(preset.brand)) {
-    fail(where, `brand "${preset.brand}" does not exist`);
-  }
-  if (typeof preset.baseURL !== "string" || preset.baseURL.trim() === "") {
-    fail(where, "baseURL is required");
-  } else if (!/^https:\/\/\S+$/.test(preset.baseURL) && !/^http:\/\/(localhost|127\.0\.0\.1)\S*$/.test(preset.baseURL)) {
-    fail(where, "baseURL must be https (or http on localhost)");
-  }
-  if (!PROTOCOLS.has(preset.protocol)) {
-    fail(where, `protocol must be one of ${[...PROTOCOLS].join(", ")}`);
-  }
-  if (!SECTIONS.has(preset.section)) {
-    fail(where, `section must be one of ${[...SECTIONS].join(", ")}`);
-  }
-  if (preset.minAppVersion !== undefined && !VERSION_RE.test(String(preset.minAppVersion))) {
-    fail(where, "minAppVersion must be dotted numbers");
-  }
-});
-
-// ── 7. Engines ──────────────────────────────────────────────────────────────
-const engineIDs = new Set();
-engines.forEach((engine, index) => {
-  const where = `engines[${index}] (${engine?.id ?? "?"})`;
-  if (!engine || typeof engine !== "object") return fail(where, "must be an object");
-  if (typeof engine.id !== "string" || !ID_RE.test(engine.id)) {
-    fail(where, "id must be lowercase letters, digits and dashes");
-  } else if (engineIDs.has(engine.id)) {
-    fail(where, `duplicate engine id "${engine.id}"`);
-  } else {
-    engineIDs.add(engine.id);
-  }
-  // `brand: null` is a real answer: an engine with no logo row of its own.
-  const engineBrand = engine.brand ?? null;
-  if (engineBrand !== null && !brandIDs.has(engineBrand)) {
-    fail(where, `brand "${engineBrand}" does not exist`);
-  }
-  if (!Array.isArray(engine.ports) || engine.ports.length === 0
-      || engine.ports.some((port) => !Number.isInteger(port) || port <= 0 || port > 65535)) {
-    fail(where, "ports must be a non-empty array of port numbers");
-  }
-  if (!DIALECTS.has(engine.dialect)) {
-    fail(where, `dialect must be one of ${[...DIALECTS].join(", ")}`);
-  }
-  if (engine.probes !== undefined && (!Array.isArray(engine.probes) || engine.probes.some((p) => typeof p !== "string"))) {
-    fail(where, "probes must be an array of paths");
-  }
-});
-
-// ── 8. Unsupported shapes (app policy; read from the bundle only) ───────────
-unsupportedHosts.forEach((entry, index) => {
-  const where = `unsupportedHosts[${index}]`;
-  if (typeof entry?.suffix !== "string" || entry.suffix.trim() === "") {
-    fail(where, "suffix is required");
-  }
-  if (typeof entry?.reason !== "string" || entry.reason.trim() === "") {
-    fail(where, "reason is required");
-  }
-});
-
-// ── Size: this ships inside the app and is downloaded over mobile data ──────
-const bytes = Buffer.byteLength(text, "utf8");
-if (bytes > 512 * 1024) {
-  fail("(file)", `${bytes} bytes is over the 512 KB the app will install`);
-}
-
-if (failures.length) {
-  console.error(`check-providers-json: FAIL — ${path.basename(filePath)}`);
-  for (const failure of failures) console.error(" -", failure);
+if (!Array.isArray(catalog.providers)) {
+  console.error("providers: must be an array");
   process.exit(1);
 }
 
-console.log(`check-providers-json: OK — ${path.basename(filePath)}`);
+// ── 2. Size ─────────────────────────────────────────────────────────────────
+if (catalog.providers.length < MIN_ROWS || catalog.providers.length > MAX_ROWS) {
+  report("providers", `must hold ${MIN_ROWS}…${MAX_ROWS} rows, found ${catalog.providers.length}`);
+}
+
+const ids = new Set();
+const names = new Set();
+const keywords = new Map();
+const hosts = new Map();
+let marks = 0;
+
+catalog.providers.forEach((row, index) => {
+  const where = `providers[${index}]`;
+  const id = typeof row.id === "string" ? row.id : "";
+  const label = `${where} (${id || "no id"})`;
+
+  // ── 3. Identity ───────────────────────────────────────────────────────────
+  if (!ID_RE.test(id)) {
+    report(`${where}.id`, `must match ${ID_RE}, found ${JSON.stringify(row.id)}`);
+  } else if (ids.has(id)) {
+    report(`${where}.id`, `duplicate id ${id}`);
+  }
+  ids.add(id);
+
+  if (typeof row.name !== "string" || !row.name.trim()) {
+    report(`${where}.name`, "must be a non-empty string");
+  } else if (row.name.length > 60) {
+    report(`${where}.name`, "must be at most 60 characters");
+  } else if (names.has(row.name)) {
+    report(`${where}.name`, `duplicate name ${row.name}`);
+  } else {
+    names.add(row.name);
+  }
+
+  // ── 4. Endpoint ───────────────────────────────────────────────────────────
+  let host = null;
+  if (typeof row.baseURL !== "string" || !row.baseURL.startsWith("https://")) {
+    report(`${where}.baseURL`, "must start with https://");
+  } else {
+    try {
+      host = new URL(row.baseURL).host.toLowerCase();
+    } catch {
+      report(`${where}.baseURL`, "is not a URL");
+    }
+    if (host && (host === "localhost" || host === "0.0.0.0" || host.startsWith("127."))) {
+      report(`${where}.baseURL`, "must not be a local address");
+    }
+  }
+
+  // ── 5. Protocol ───────────────────────────────────────────────────────────
+  if (!PROTOCOLS.includes(row.protocol)) {
+    report(`${where}.protocol`, `must be one of ${PROTOCOLS.join(", ")}, found ${row.protocol}`);
+  }
+
+  if (!Array.isArray(row.modelsDevIDs)) {
+    report(`${where}.modelsDevIDs`, "is required (use [] when models.dev has no entry)");
+  } else if (row.modelsDevIDs.length > 8) {
+    report(`${where}.modelsDevIDs`, "must hold at most 8 ids");
+  }
+
+  // ── 6. Keywords ───────────────────────────────────────────────────────────
+  if (row.keywords !== undefined) {
+    if (!Array.isArray(row.keywords)) {
+      report(`${where}.keywords`, "must be an array");
+    } else {
+      if (row.keywords.length > 8) report(`${where}.keywords`, "must hold at most 8 entries");
+      for (const keyword of row.keywords) {
+        if (typeof keyword !== "string" || keyword.length === 0 || keyword.length > 40) {
+          report(`${where}.keywords`, `invalid entry ${JSON.stringify(keyword)}`);
+          continue;
+        }
+        if (keyword !== keyword.toLowerCase()) {
+          report(`${where}.keywords`, `${keyword} must be lowercase`);
+        }
+        if (GENERIC_KEYWORDS.has(keyword.toLowerCase())) {
+          report(`${where}.keywords`, `${keyword} is too generic to identify an endpoint`);
+        }
+        const owner = keywords.get(keyword);
+        if (owner && owner !== id) {
+          report(`${where}.keywords`, `${keyword} is already claimed by ${owner}`);
+        }
+        keywords.set(keyword, id);
+      }
+    }
+  }
+
+  // ── 7. Host ───────────────────────────────────────────────────────────────
+  if (host) {
+    const owner = hosts.get(host);
+    if (owner && owner !== id) {
+      report(`${where}.baseURL`, `${host} is already claimed by ${owner}`);
+    }
+    hosts.set(host, id);
+  }
+
+  // ── 8. Mark ───────────────────────────────────────────────────────────────
+  const logo = row.logo;
+  if (logo === undefined || logo === null || logo === "") return;
+  if (typeof logo !== "string") {
+    report(`${where}.logo`, "must be a string");
+    return;
+  }
+
+  if (logo.startsWith("asset:")) {
+    const assetID = logo.slice("asset:".length);
+    if (assetID !== id) {
+      report(`${where}.logo`, `an app asset may only be named after the row itself (${id})`);
+    }
+    return;
+  }
+
+  marks += 1;
+  const expected = `providers/logos/${id}.png`;
+  if (logo !== expected) {
+    report(`${where}.logo`, `must be ${expected}`);
+  }
+  if (logo.includes("://") || logo.startsWith("/") || logo.split("/").some((part) => part === "." || part === "..")) {
+    report(`${where}.logo`, "must be a relative path inside this repository");
+    return;
+  }
+
+  const file = path.join(root, logo);
+  if (!fs.existsSync(file)) {
+    report(`${where}.logo`, `file is missing (${logo})`);
+    return;
+  }
+  const bytes = fs.readFileSync(file);
+  if (bytes.length > MAX_MARK_BYTES) {
+    report(`${where}.logo`, `is ${Math.round(bytes.length / 1024)} KB, over the ${MAX_MARK_BYTES / 1024} KB limit`);
+  }
+  const isPNG = bytes.length > 24
+    && bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47;
+  if (!isPNG) {
+    report(`${where}.logo`, "is not a PNG");
+    return;
+  }
+  const width = bytes.readUInt32BE(16);
+  const height = bytes.readUInt32BE(20);
+  const longest = Math.max(width, height);
+  const shortest = Math.min(width, height);
+  if (longest > MAX_MARK_SIDE || shortest < MIN_MARK_SIDE) {
+    report(`${where}.logo`, `is ${width}×${height}, outside ${MIN_MARK_SIDE}…${MAX_MARK_SIDE} px`);
+  }
+});
+
+if (marks > MAX_MARKS) {
+  report("providers", `must reference at most ${MAX_MARKS} downloadable marks, found ${marks}`);
+}
+
+if (violations.length) {
+  console.error(`FAIL: ${violations.length} problem(s) in ${path.relative(root, filePath)}`);
+  for (const violation of violations) console.error(`  - ${violation}`);
+  process.exit(1);
+}
+
 console.log(
-  `  schema ${file.schemaVersion}, ${brands.length} brands, ${presets.length} presets,`
-  + ` ${engines.length} engines, ${Object.keys(hosts).length} hosts, ${unsupportedHosts.length} unsupported shapes, ${bytes} bytes`
+  `PASS: ${catalog.providers.length} providers, ${marks} downloadable mark(s), schema ${catalog.schemaVersion}.`
 );
