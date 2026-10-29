@@ -5,8 +5,7 @@ endpoint: name, base URL, protocol, and an optional logo.
 
 The app downloads this file when someone opens *Choose Provider*, so **merging a
 pull request here publishes a provider** — no App Store release. Requires
-BayesChat **1.1.7 or later**; older builds ship their own copy and never fetch
-this one.
+BayesChat **1.1.7 or later**.
 
 ## The pull request
 
