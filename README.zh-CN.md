@@ -27,6 +27,7 @@
   <a href="docs/"><code>文档</code></a> &nbsp;
   <a href="#截图"><code>截图</code></a> &nbsp;
   <a href="CHANGELOG.md"><code>更新日志</code></a> &nbsp;
+  <a href="release-notes/"><code>发布说明</code></a> &nbsp;
   <a href="PROVIDERS.md"><code>服务商</code></a> &nbsp;
   <a href="#支持"><code>支持</code></a> &nbsp;
   <a href="README.md"><code>English</code></a>

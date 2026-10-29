@@ -27,6 +27,7 @@
   <a href="docs/"><code>Docs</code></a> &nbsp;
   <a href="#screenshots"><code>Screenshots</code></a> &nbsp;
   <a href="CHANGELOG.md"><code>Changelog</code></a> &nbsp;
+  <a href="release-notes/"><code>Release Notes</code></a> &nbsp;
   <a href="PROVIDERS.md"><code>Providers</code></a> &nbsp;
   <a href="#support"><code>Support</code></a> &nbsp;
   <a href="README.zh-CN.md"><code>简体中文</code></a>
