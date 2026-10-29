@@ -14,7 +14,7 @@
   <img src="docs/badges/device.svg" alt="可在 iPhone 与 iPad 上运行">
   <img src="docs/badges/languages.svg" alt="22 种语言">
   <img src="docs/badges/pro.svg" alt="Pro 为一次性 14.99 美元购买">
-  <img src="docs/badges/version.svg" alt="版本 1.1.5，构建号 48">
+  <img src="docs/badges/version.svg" alt="版本 1.1.7，构建号 55">
 </p>
 
 <p align="center">

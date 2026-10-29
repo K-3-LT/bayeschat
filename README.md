@@ -14,7 +14,7 @@
   <img src="docs/badges/device.svg" alt="Runs on iPhone and iPad">
   <img src="docs/badges/languages.svg" alt="22 languages">
   <img src="docs/badges/pro.svg" alt="Pro is a one-time $14.99 purchase">
-  <img src="docs/badges/version.svg" alt="Version 1.1.5, build 48">
+  <img src="docs/badges/version.svg" alt="Version 1.1.7, build 55">
 </p>
 
 <p align="center">
