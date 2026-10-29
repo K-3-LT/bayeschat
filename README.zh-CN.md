@@ -54,6 +54,18 @@
 - **实时模型列表** —— 模型选择器展示的是你的 Key 真正能调用的模型，而不是一张写死的表
 - Key 保存在**钥匙串（Keychain）**中，绝不落到明文文件里
 
+## 把你的服务商加进来
+
+*Choose Provider* 里的列表是一份公开目录，不是写死在 App 里的：一个 PR 加一行
+（和一张图标），就能到达已经装了 App 的用户 —— 不需要发版。
+
+- [`PROVIDERS.md`](PROVIDERS.md) 是契约：文件格式、图标要求，以及哪些东西没法用数据表达。
+- 提 PR 前跑 `node scripts/check-providers.mjs`，CI 会跑同一套检查。
+- 需要 **BayesChat 1.1.7 或更高版本**。更旧的版本自带一份列表、从不下载，
+  因此看不到后来新增的服务商。
+
+[去提 PR →](https://github.com/fan3cn/bayeschat/compare)
+
 ## MCP：把你的 AI 接入真实世界
 
 大多数 MCP 工具止步于桌面端。BayesChat 通过 **Streamable HTTP** 连接**远程 MCP 服务器**，

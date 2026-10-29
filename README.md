@@ -56,6 +56,21 @@ Nothing is hardcoded — if an endpoint speaks a supported protocol, it works.
   hardcoded table
 - Keys live in the **Keychain**, never in plain files
 
+## Add your provider
+
+The list behind *Choose Provider* is a public catalogue, not a build-time
+constant: one pull request adds a row (and a mark), and it reaches people who
+already have the app — no App Store release.
+
+- [`PROVIDERS.md`](PROVIDERS.md) is the contract: the file format, the logo
+  rules, and what cannot be expressed as data.
+- Run `node scripts/check-providers.mjs` before opening the pull request; CI runs
+  the same check.
+- Requires **BayesChat 1.1.7 or later**. Older builds ship their own copy of the
+  list and never download it, so a newly added provider will not appear there.
+
+[Open a pull request →](https://github.com/fan3cn/bayeschat/compare)
+
 ## MCP: Plug in your AI into the real world
 
 Most MCP tooling stops at the desktop. BayesChat connects to **remote MCP servers

@@ -13,6 +13,11 @@ Store release.
 GET https://raw.githubusercontent.com/fan3cn/bayeschat/main/providers.json
 ```
 
+**Requires BayesChat 1.1.7 or later.** That is the release that started
+downloading this file. Older builds ship their own copy of the list and never
+fetch it, so a row added here is invisible to them — there is no per-row version
+field, the file is read as a whole.
+
 ## Adding yourself
 
 One pull request, one provider. Add a row to the `providers` array, bump
@@ -83,6 +88,23 @@ node scripts/check-providers.mjs
 It checks the whole file — ids, endpoints, protocols, keyword ownership, mark
 paths and sizes — and prints one line per violation. CI runs the same script on
 this pull request. Paste its output in the description.
+
+## Submitting it
+
+1. Fork this repository and work on a branch (`provider/<id>` is a good name).
+2. Add the row to `providers.json`, bump `generatedAt`, and add
+   `providers/logos/<id>.png` if the mark is not already in the app.
+3. Run the validator above from the repository root. It has to exit 0.
+4. Open the pull request against `main`:
+   <https://github.com/fan3cn/bayeschat/compare>
+   In the description, say who you are, what the endpoint is, and paste the
+   validator output. Mention any auth or header the app would need beyond a
+   Bearer API key.
+5. A maintainer reviews it. Merging to `main` publishes the file; users get it
+   the next time they open *Choose Provider*.
+
+Keep the pull request to the provider: one row, one PNG, `generatedAt`. Reviews
+are faster when the diff is nothing else.
 
 ## After it merges
 
