@@ -24,8 +24,10 @@
  *  6. Keywords are how a hand-made provider is recognised. They are lowercase
  *     (the app lowercases what it matches), they cannot be generic words, and no
  *     two rows may claim the same one.
- *  7. Hosts are identity: two rows may not share one, or the app would have to
- *     pick a winner.
+ *  7. Endpoints are unique. Two rows may share a host when the path differs —
+ *     a vendor's two gateways (OpenCode Zen and Go) do — but the full base URL,
+ *     which is what the app opens, may only appear once. The first row on a
+ *     host owns that host's identity for host-based lookups.
  *  8. Marks. A row without `logo` uses the mark that ships with the app (named
  *     after the id), so there is no field for borrowing one. A downloadable mark
  *     is `providers/logos/<id>.png`: a real PNG, small, roughly square, and
@@ -90,6 +92,7 @@ const ids = new Set();
 const names = new Set();
 const keywords = new Map();
 const hosts = new Map();
+const endpoints = new Map();
 let marks = 0;
 
 catalog.providers.forEach((row, index) => {
@@ -167,13 +170,18 @@ catalog.providers.forEach((row, index) => {
     }
   }
 
-  // ── 7. Host ───────────────────────────────────────────────────────────────
+  // ── 7. Endpoint ───────────────────────────────────────────────────────────
+  // One vendor may offer two endpoints on the same host (OpenCode Zen and Go).
+  // What has to be unique is the URL the app opens; the first row on a host
+  // keeps that host's identity.
   if (host) {
-    const owner = hosts.get(host);
-    if (owner && owner !== id) {
-      report(`${where}.baseURL`, `${host} is already claimed by ${owner}`);
+    const endpoint = row.baseURL.toLowerCase();
+    const endpointOwner = endpoints.get(endpoint);
+    if (endpointOwner && endpointOwner !== id) {
+      report(`${where}.baseURL`, `duplicate endpoint ${row.baseURL} (already used by ${endpointOwner})`);
     }
-    hosts.set(host, id);
+    endpoints.set(endpoint, id);
+    if (!hosts.has(host)) hosts.set(host, id);
   }
 
   // ── 8. Mark ───────────────────────────────────────────────────────────────

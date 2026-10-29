@@ -64,8 +64,9 @@ deliberate fallback rather than an error.
 - **Rename or rewrite an existing row.** `id`s are persisted on user devices; a
   new id is a new provider. Correcting a typo in a name or a dead URL is fine —
   say so in the description.
-- **Take another provider's endpoint or keyword.** A host and a keyword belong
-  to the row that owns them; two rows may not share a host.
+- **Take another provider's endpoint or keyword.** A keyword belongs to the row
+  that owns it. A host may serve more than one endpoint of the same vendor
+  (OpenCode Zen and Go share one), but the full base URL may only appear once.
 - **Add a protocol, an auth scheme or a URL rewrite.** Those live in the app.
   If your endpoint cannot be called with a base URL plus an API key (signed
   requests, a resource name in the host, an OAuth exchange), it cannot be a row
