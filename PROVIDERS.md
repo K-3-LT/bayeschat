@@ -1,115 +1,68 @@
 # Provider list
 
-`providers.json` is the list of providers BayesChat offers when you add one: a
-row per endpoint, prefilled with the name, the base URL and the protocol, plus a
-mark to show beside it.
+`providers.json` is the list behind *Choose Provider* in BayesChat. One row per
+endpoint: name, base URL, protocol, and an optional logo.
 
-It ships inside the app **and** is downloaded from this repository, so a pull
-request here reaches people who already have the app: the app refreshes the
-list the next time someone opens *Choose Provider* to add a provider. No App
-Store release.
+The app downloads this file when someone opens *Choose Provider*, so **merging a
+pull request here publishes a provider** — no App Store release. Requires
+BayesChat **1.1.7 or later**; older builds ship their own copy and never fetch
+this one.
+
+## The pull request
+
+Fork, branch (`provider/<id>`), then:
 
 ```
-GET https://raw.githubusercontent.com/fan3cn/bayeschat/main/providers.json
+providers.json              one row added, generatedAt bumped (when the set changed)
+providers/logos/<id>.png    new, if the mark is not built into the app
 ```
 
-**Requires BayesChat 1.1.7 or later.** That is the release that started
-downloading this file. Older builds ship their own copy of the list and never
-fetch it, so a row added here is invisible to them — there is no per-row version
-field, the file is read as a whole.
-
-## Adding yourself
-
-One pull request, one provider. Add a row to the `providers` array, bump
-`generatedAt`, and add a PNG if you have no bundled mark:
-
-```json
-{
-  "id": "foo",
-  "name": "Foo AI",
-  "baseURL": "https://api.foo.ai/v1",
-  "protocol": "openAICompatible",
-  "modelsDevIDs": ["foo"],
-  "keywords": ["foo"],
-  "logo": "providers/logos/foo.png"
-}
-```
-
-| Field | Required | Rules |
-|---|---|---|
-| `id` | yes | lowercase ASCII, `[a-z0-9][a-z0-9._-]*`, up to 40 characters, **never renamed**. It is what the app stores on the user's provider, and the name your mark is cached under |
-| `name` | yes | English name, up to 60 characters, unique in the file |
-| `baseURL` | yes | an `https://` API root, **without** `/chat/completions`; whether it ends in `/v1` follows your docs |
-| `protocol` | yes | `openAICompatible` or `anthropic`. Anything else is a code change in the app, not data |
-| `modelsDevIDs` | yes | the [models.dev](https://models.dev) provider ids this row covers (`[]` if none). A row without this field is refused |
-| `keywords` | no | defaults to `[id]`. Lowercase fragments matched against the name and base URL a user typed, so their hand-made provider picks up your mark. Must not collide with another row |
-| `logo` | no | a relative PNG path, `providers/logos/<id>.png`. Omit it when the mark ships inside the app — a bundled mark is named after the row and needs no field. **Absolute URLs, `asset:` references and `..` are refused** |
-
-`generatedAt` is the date the row set changed (`2026-10-29T07:10:34Z`). The app
-shows it as when the list was last updated.
-
-## Logo
-
-- PNG, transparent background, **one colour** (the app renders it as a tinted
-  glyph, so the colour comes from the theme and only the shape survives).
-- Up to 512 KB, shortest side at least 16 px, longest side at most 1024 px.
-- Put it at `providers/logos/<id>.png` and reference it from the row as
-  `providers/logos/<id>.png`.
-- A wordmark, a gradient, or a mark with its own background will be flattened
-  into a blob. A glyph trimmed to its own outline is what looks right.
-- A mark that ships inside the app is an imageset named after the row
-  (`ProviderLogo<Id>`). Leave `logo` out and it is used automatically; there is
-  no field for pointing a row at someone else's.
-
-Until the PNG arrives the row shows the first letter of its name, which is a
-deliberate fallback rather than an error.
-
-## What a pull request cannot do
-
-- **Rename or rewrite an existing row.** `id`s are persisted on user devices; a
-  new id is a new provider. Correcting a typo in a name or a dead URL is fine —
-  say so in the description.
-- **Take another provider's endpoint or keyword.** A keyword belongs to the row
-  that owns it. A host may serve more than one endpoint of the same vendor
-  (OpenCode Zen and Go share one), but the full base URL may only appear once.
-- **Add a protocol, an auth scheme or a URL rewrite.** Those live in the app.
-  If your endpoint cannot be called with a base URL plus an API key (signed
-  requests, a resource name in the host, an OAuth exchange), it cannot be a row
-  here — see the notes in the app's pull request.
-- **Point a mark at another host.** Downloadable marks are only fetched from
-  this repository.
-
-## Before you open the pull request
+Run the validator from the repository root — it must exit 0, and CI runs the
+same script — and paste its output in the PR description:
 
 ```bash
 node scripts/check-providers.mjs
 ```
 
-It checks the whole file — ids, endpoints, protocols, keyword ownership, mark
-paths and sizes — and prints one line per violation. CI runs the same script on
-this pull request. Paste its output in the description.
+Open it against `main`: <https://github.com/fan3cn/bayeschat/compare>
+Title it `feat(providers): add <Name>`. In the description say who you are, what
+the endpoint is, and whether users need any header beyond a Bearer key. One
+provider per pull request.
 
-## Submitting it
+## The row
 
-1. Fork this repository and work on a branch (`provider/<id>` is a good name).
-2. Add the row to `providers.json`, bump `generatedAt`, and add
-   `providers/logos/<id>.png` if the mark is not already in the app.
-3. Run the validator above from the repository root. It has to exit 0.
-4. Open the pull request against `main`:
-   <https://github.com/fan3cn/bayeschat/compare>
-   In the description, say who you are, what the endpoint is, and paste the
-   validator output. Mention any auth or header the app would need beyond a
-   Bearer API key.
-5. A maintainer reviews it. Merging to `main` publishes the file; users get it
-   the next time they open *Choose Provider*.
+```json
+{ "id": "foo", "name": "Foo AI", "baseURL": "https://api.foo.ai/v1",
+  "protocol": "openAICompatible", "modelsDevIDs": [], "keywords": ["foo"],
+  "logo": "providers/logos/foo.png" }
+```
 
-Keep the pull request to the provider: one row, one PNG, `generatedAt`. Reviews
-are faster when the diff is nothing else.
+| Field | Rules |
+|---|---|
+| `id` | lowercase `[a-z0-9._-]`, 40 chars max, **never renamed** — it is stored on the user's device and names the logo file |
+| `name` | English name, 60 chars max, unique in the file |
+| `baseURL` | `https://` API root, without `/chat/completions` |
+| `protocol` | `openAICompatible` or `anthropic` |
+| `modelsDevIDs` | your [models.dev](https://models.dev) provider ids; `[]` if you are not listed there |
+| `keywords` | optional, lowercase fragments matched against the name and URL a user types, so their own entry picks up your logo; defaults to `[id]`, may not collide |
+| `logo` | optional; `providers/logos/<id>.png` |
 
-## After it merges
+## The logo
 
-Merging to `main` publishes the file. Users get it the next time they open
-*Choose Provider*; a refresh that fails or times out leaves the list they
-already have. Reverting the pull request removes it the same way.
+- PNG, transparent background, **one colour** — the app renders it as a tinted glyph, so a detailed wordmark becomes a blob.
+- 512 KB max, 16–1024 px.
+- Omit `logo` only if the mark already ships inside the app.
+
+## Not accepted
+
+- A host with a resource name, signed request or OAuth exchange — it cannot be reached with a base URL plus a key.
+- Another provider's endpoint or keyword; the full base URL must be unique.
+- A logo hosted anywhere but this repository.
+
+## How it works
+
+- A user opens *Choose Provider*; the app asks for this file, in the background, while the list they already have stays on screen.
+- A valid file replaces the list in place. A slow, failed or malformed one changes nothing — the user keeps the previous list and adds their provider as usual.
+- Merging to `main` publishes it; reverting the pull request removes it the same way, on the next open.
 
 Being listed is free and is not an endorsement.
