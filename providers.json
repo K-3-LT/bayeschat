@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 2,
+  "updatedAt": "2026-10-29",
+  "brands": [
+    {
+      "id": "openai",
+      "modelsDevIDs": [
+        "openai"
+      ],
+      "name": "OpenAI",
+      "hex": "412991",
+      "keywords": [
+        "openai"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "anthropic",
+      "modelsDevIDs": [
+        "anthropic"
+      ],
+      "name": "Anthropic",
+      "hex": "191919",
+      "keywords": [
+        "anthropic"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "gemini",
+      "modelsDevIDs": [
+        "google"
+      ],
+      "name": "Google Gemini",
+      "hex": "8E75B2",
+      "keywords": [
+        "gemini",
+        "generativelanguage"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "openrouter",
+      "modelsDevIDs": [
+        "openrouter"
+      ],
+      "name": "OpenRouter",
+      "hex": "6466E9",
+      "keywords": [
+        "openrouter"
+      ],
+      "kind": "gateway"
+    },
+    {
+      "id": "mistral",
+      "modelsDevIDs": [
+        "mistral"
+      ],
+      "name": "Mistral",
+      "hex": "F4741B",
+      "keywords": [
+        "mistral"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "xai",
+      "modelsDevIDs": [
+        "xai"
+      ],
+      "name": "xAI",
+      "hex": "16181D",
+      "keywords": [
+        "x.ai",
+        "xai"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "groq",
+      "modelsDevIDs": [
+        "groq"
+      ],
+      "name": "Groq",
+      "hex": "F55036",
+      "keywords": [
+        "groq"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "deepseek",
+      "modelsDevIDs": [
+        "deepseek"
+      ],
+      "name": "DeepSeek",
+      "hex": "4D6BFE",
+      "keywords": [
+        "deepseek"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "together",
+      "modelsDevIDs": [
+        "togetherai"
+      ],
+      "name": "Together AI",
+      "hex": "6E56CF",
+      "keywords": [
+        "together"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "fireworks",
+      "modelsDevIDs": [
+        "fireworks-ai"
+      ],
+      "name": "Fireworks AI",
+      "hex": "FF5722",
+      "keywords": [
+        "fireworks"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "azure",
+      "modelsDevIDs": [
+        "azure",
+        "azure-cognitive-services"
+      ],
+      "name": "Azure",
+      "hex": "0078D4",
+      "keywords": [
+        "azure",
+        "openai.azure.com"
+      ],
+      "kind": "cloud",
+      "unsupported": "Azure 的地址由资源名和部署名拼成，无法用 base URL 直连"
+    },
+    {
+      "id": "opencode",
+      "modelsDevIDs": [
+        "opencode"
+      ],
+      "name": "OpenCode",
+      "hex": "211E1E",
+      "keywords": [
+        "opencode"
+      ],
+      "kind": "gateway"
+    },
+    {
+      "id": "zhipu",
+      "modelsDevIDs": [
+        "zai",
+        "zhipuai"
+      ],
+      "name": "Zhipu AI",
+      "hex": "3857FF",
+      "keywords": [
+        "zhipu",
+        "bigmodel",
+        "glm"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "moonshot",
+      "modelsDevIDs": [
+        "moonshotai"
+      ],
+      "name": "Moonshot Kimi",
+      "hex": "6C5CE7",
+      "keywords": [
+        "moonshot",
+        "kimi"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "minimax",
+      "modelsDevIDs": [
+        "minimax",
+        "minimax-cn"
+      ],
+      "name": "MiniMax",
+      "hex": "FF6B2C",
+      "keywords": [
+        "minimax",
+        "minimaxi"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "xiaomi",
+      "modelsDevIDs": [
+        "xiaomi"
+      ],
+      "name": "Xiaomi MiMo",
+      "hex": "FF6900",
+      "keywords": [
+        "mimo",
+        "xiaomi"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "qwen",
+      "modelsDevIDs": [
+        "alibaba"
+      ],
+      "name": "Qwen",
+      "hex": "FF6A00",
+      "keywords": [
+        "qwen",
+        "dashscope"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "volcengine",
+      "modelsDevIDs": [
+        "volcengine"
+      ],
+      "name": "Volcengine",
+      "hex": "3370FF",
+      "keywords": [
+        "volcengine",
+        "ark",
+        "doubao"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "tencentcloud",
+      "modelsDevIDs": [],
+      "name": "Tencent Cloud",
+      "hex": "006EFF",
+      "keywords": [
+        "tencentcloud",
+        "tencent",
+        "hunyuan"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "stepfun",
+      "modelsDevIDs": [
+        "stepfun"
+      ],
+      "name": "StepFun",
+      "hex": "6366F1",
+      "keywords": [
+        "stepfun"
+      ],
+      "kind": "cloud"
+    },
+    {
+      "id": "ollama",
+      "modelsDevIDs": [
+        "ollama-cloud"
+      ],
+      "name": "Ollama",
+      "hex": "000000",
+      "keywords": [
+        "ollama"
+      ],
+      "kind": "local",
+      "dialect": "openAI"
+    },
+    {
+      "id": "lmstudio",
+      "modelsDevIDs": [],
+      "name": "LM Studio",
+      "hex": "4F46E5",
+      "keywords": [
+        "lm studio",
+        "lmstudio",
+        "lm-studio"
+      ],
+      "kind": "local",
+      "dialect": "openAI"
+    },
+    {
+      "id": "omlx",
+      "modelsDevIDs": [],
+      "name": "oMLX",
+      "hex": "111827",
+      "keywords": [
+        "omlx"
+      ],
+      "kind": "local",
+      "dialect": "openAI"
+    },
+    {
+      "id": "vllm",
+      "modelsDevIDs": [],
+      "name": "vLLM",
+      "hex": "2563EB",
+      "keywords": [
+        "vllm"
+      ],
+      "kind": "local",
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "sglang",
+      "modelsDevIDs": [],
+      "name": "SGLang",
+      "hex": "4B6BFB",
+      "keywords": [
+        "sglang"
+      ],
+      "kind": "local",
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "unsloth",
+      "modelsDevIDs": [],
+      "name": "Unsloth",
+      "hex": "7C5CFC",
+      "keywords": [
+        "unsloth"
+      ],
+      "kind": "local",
+      "dialect": "openAI"
+    },
+    {
+      "id": "magpie",
+      "modelsDevIDs": [],
+      "name": "Magpie",
+      "hex": "111111",
+      "keywords": [
+        "magpie"
+      ],
+      "kind": "local",
+      "dialect": "openAI"
+    }
+  ],
+  "presets": [
+    {
+      "id": "openrouter",
+      "brand": "openrouter",
+      "name": "openrouter",
+      "baseURL": "https://openrouter.ai/api/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "openai",
+      "brand": "openai",
+      "name": "OpenAI",
+      "baseURL": "https://api.openai.com/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "anthropic",
+      "brand": "anthropic",
+      "name": "Anthropic",
+      "baseURL": "https://api.anthropic.com",
+      "protocol": "anthropic",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "gemini",
+      "brand": "gemini",
+      "name": "Google Gemini",
+      "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "mistral",
+      "brand": "mistral",
+      "name": "Mistral",
+      "baseURL": "https://api.mistral.ai/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "xai",
+      "brand": "xai",
+      "name": "xAI",
+      "baseURL": "https://api.x.ai/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "groq",
+      "brand": "groq",
+      "name": "Groq",
+      "baseURL": "https://api.groq.com/openai/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "deepseek",
+      "brand": "deepseek",
+      "name": "DeepSeek",
+      "baseURL": "https://api.deepseek.com/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "together",
+      "brand": "together",
+      "name": "Together AI",
+      "baseURL": "https://api.together.xyz/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "fireworks",
+      "brand": "fireworks",
+      "name": "Fireworks AI",
+      "baseURL": "https://api.fireworks.ai/inference/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "azure",
+      "brand": "azure",
+      "name": "Azure",
+      "baseURL": "https://YOUR_RESOURCE.openai.azure.com/openai/v1",
+      "protocol": "openAICompatible",
+      "section": "internationalCloud"
+    },
+    {
+      "id": "zhipu",
+      "brand": "zhipu",
+      "name": "Zhipu AI",
+      "names": {
+        "zh": "智谱 AI"
+      },
+      "baseURL": "https://open.bigmodel.cn/api/paas/v4",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "moonshot",
+      "brand": "moonshot",
+      "name": "Moonshot Kimi",
+      "names": {
+        "zh": "月之暗面 Kimi"
+      },
+      "baseURL": "https://api.moonshot.cn/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "minimax",
+      "brand": "minimax",
+      "name": "MiniMax",
+      "names": {
+        "zh": "MiniMax"
+      },
+      "baseURL": "https://api.minimaxi.com/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "xiaomi",
+      "brand": "xiaomi",
+      "name": "Xiaomi MiMo",
+      "names": {
+        "zh": "小米 MiMo"
+      },
+      "baseURL": "https://api.xiaomimimo.com/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "qwen",
+      "brand": "qwen",
+      "name": "Qwen",
+      "names": {
+        "zh": "通义千问"
+      },
+      "baseURL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "tencentcloud",
+      "brand": "tencentcloud",
+      "name": "Tencent Cloud",
+      "names": {
+        "zh": "腾讯云"
+      },
+      "baseURL": "https://api.hunyuan.cloud.tencent.com/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "volcengine",
+      "brand": "volcengine",
+      "name": "Volcengine",
+      "names": {
+        "zh": "火山引擎"
+      },
+      "baseURL": "https://ark.cn-beijing.volces.com/api/v3",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "stepfun",
+      "brand": "stepfun",
+      "name": "StepFun",
+      "names": {
+        "zh": "阶跃星辰"
+      },
+      "baseURL": "https://api.stepfun.com/v1",
+      "protocol": "openAICompatible",
+      "section": "chineseCloud"
+    },
+    {
+      "id": "ollama",
+      "brand": "ollama",
+      "name": "Ollama",
+      "baseURL": "http://localhost:11434/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "lmstudio",
+      "brand": "lmstudio",
+      "name": "LM Studio",
+      "baseURL": "http://localhost:1234/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "omlx",
+      "brand": "omlx",
+      "name": "oMLX",
+      "baseURL": "http://localhost:8080/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "vllm",
+      "brand": "vllm",
+      "name": "vLLM",
+      "baseURL": "http://localhost:8000/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "sglang",
+      "brand": "sglang",
+      "name": "SGLang",
+      "baseURL": "http://localhost:30000/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "unsloth",
+      "brand": "unsloth",
+      "name": "Unsloth",
+      "baseURL": "http://localhost:8001/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    },
+    {
+      "id": "magpie",
+      "brand": "magpie",
+      "name": "Magpie",
+      "baseURL": "http://127.0.0.1:3425/v1",
+      "protocol": "openAICompatible",
+      "section": "localEngines"
+    }
+  ],
+  "hosts": {
+    "api.openai.com": "openai",
+    "api.anthropic.com": "anthropic",
+    "generativelanguage.googleapis.com": "gemini",
+    "api.together.xyz": "together",
+    "api.x.ai": "xai",
+    "api.groq.com": "groq",
+    "api.mistral.ai": "mistral",
+    "openai.azure.com": "azure"
+  },
+  "engines": [
+    {
+      "id": "ollama",
+      "brand": "ollama",
+      "ports": [
+        11434
+      ],
+      "probes": [
+        "/api/tags"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "lmstudio",
+      "brand": "lmstudio",
+      "ports": [
+        1234
+      ],
+      "probes": [
+        "/api/v0/models"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "vllm",
+      "brand": "vllm",
+      "ports": [
+        8000
+      ],
+      "probes": [
+        "/props"
+      ],
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "omlx",
+      "brand": "omlx",
+      "ports": [
+        8000
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "sglang",
+      "brand": "sglang",
+      "ports": [
+        30000
+      ],
+      "probes": [
+        "/get_model_info"
+      ],
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "llamacpp",
+      "brand": null,
+      "ports": [
+        8080
+      ],
+      "probes": [
+        "/props"
+      ],
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "localai",
+      "brand": null,
+      "ports": [
+        8080
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "qwenChatTemplate"
+    },
+    {
+      "id": "koboldcpp",
+      "brand": null,
+      "ports": [
+        5001
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "jan",
+      "brand": null,
+      "ports": [
+        1337
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "unsloth",
+      "brand": "unsloth",
+      "ports": [
+        8001
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "openAI"
+    },
+    {
+      "id": "magpie",
+      "brand": "magpie",
+      "ports": [
+        3425
+      ],
+      "probes": [
+        "/v1/models"
+      ],
+      "dialect": "openAI"
+    }
+  ],
+  "unsupportedHosts": [
+    {
+      "suffix": "amazonaws.com",
+      "reason": "Amazon Bedrock 使用签名鉴权，不能用 base URL + key 直连"
+    },
+    {
+      "suffix": "aiplatform.googleapis.com",
+      "reason": "Google Vertex 使用 OAuth 与项目路径，不能用 base URL + key 直连"
+    },
+    {
+      "suffix": "ml.cloud.ibm.com",
+      "reason": "IBM watsonx 需要先交换 IAM token，不能用 base URL + key 直连"
+    }
+  ]
+}
