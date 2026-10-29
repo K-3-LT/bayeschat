@@ -1,0 +1,35 @@
+Release date: August 27, 2026
+
+
+English (What's New)
+--------------------
+• Hamburger menu with slide-out history drawer — navigate between chats with a single swipe; settings moved into the drawer for cleaner space
+• Long-press context menu on your own messages — edit, copy, or delete with a centered confirmation
+• Tool result size badges — each tool call now shows how large the result was, and when a long result was trimmed before sending, it displays both original and sent sizes
+• Tool result limit raised to 20,000 characters (up from 6,000) and Max Tokens default raised to 20,480 — your tools and replies have more room before anything gets trimmed
+• Advanced reasoning options — choose XHigh or set a custom reasoning effort level; "Off" now correctly disables reasoning for each provider
+
+Also in this update:
+• Keyboard-to-composer animation rewritten — one smooth lift drives the keyboard, composer, and chat content together; no more multi-phase bounce on first show
+• Send-pin flash eliminated — your message bubble lands instantly at the top without the brief flash at the bottom
+• Scroll-to-bottom button glides instead of drags — long jumps now pre-wait for tiles to rasterize, then ease in with a smooth curve
+• Third-party keyboards stay stable — cold start and warm re-show pushes no longer drift or bounce
+• Fixed header replaces the native nav bar — title bar flash on iOS 17/18 is gone
+• Copy feedback and message menu actions restored after a stream finishes
+
+
+中文（更新说明）
+--------------
+• 汉堡菜单 + 滑出式历史抽屉——在对话间滑动切换，设置移入抽屉，界面更清爽
+• 长按自己发送的消息弹出操作菜单——编辑、复制、删除，确认居中显示
+• 工具结果大小标记——每个工具卡片显示返回结果大小，结果被截断时同时显示原始和发送大小
+• 工具结果上限提升至 20,000 字符（原 6,000），Max Tokens 默认值提升至 20,480——工具和回复有更多空间
+• 高级推理选项——可选 XHigh 或自定义推理强度；"关闭"现在对每个提供商正确禁用推理
+
+本版本还包括：
+• 键盘-输入栏动画重写——键盘、输入栏和聊天内容同步抬升，不再有双阶段弹跳
+• 发送气泡闪烁消除——消息瞬间到达顶部，不再有底部闪现
+• 回到底部按钮更流畅——长距离跳转先等待瓦片光栅化，再平滑缓入
+• 第三方键盘更稳定——冷启动和热重显不再漂移或弹跳
+• 固定顶栏替换原生导航栏——iOS 17/18 标题栏闪烁已消除
+• 流式输出结束后复制反馈和菜单操作已恢复

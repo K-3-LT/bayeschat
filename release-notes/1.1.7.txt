@@ -1,0 +1,30 @@
+Release date: October 29, 2026
+
+
+Highlights:
+• Reasoning has its own panel now: it offers only the levels your model really takes, and shows the exact request it is about to send.
+• An endpoint the app has never seen can describe itself: Try smart detection reads the model's own chat template, lists the levels it finds, and remembers that answer for the model.
+• The provider and model lists keep themselves current, so a vendor that joins the app's public catalogue appears in Choose Provider without a new version, icon and all.
+• Conversations are dated: a chat that runs past midnight is split by day, and Today, Yesterday and older dates are named the same way in the conversation list.
+• Memory shows what it just learned, in a capsule that lifts off the pill above the composer and cycles through the entries in your own words; each note now holds up to 1,000 characters.
+
+Also in this update:
+• Scrolling, the typewriter and every animation now run at the phone's full refresh rate instead of being held at 60 frames a second, so a fast flick through a long list stays smooth.
+• Opening the keyboard no longer sets off a paste banner.
+• A table that streams in keeps every column: a price inside a cell used to swallow the rest of its row and clip the last column past the screen edge until the chat was reopened.
+• The lines you are reading stay still while the answer above them grows, shrinks or swaps its cards.
+• The catalogue of models and their reasoning levels updates itself once a day in the background, and Reasoning Support in Settings says what it knows, when it last checked and what changed.
+• Verify & Fetch Models replaces a provider's model list instead of appending to it, and a model you typed by hand is marked Manual and survives the refresh.
+• Each provider receives its thinking control in the shape it documents, from OpenRouter's nested object to Claude's adaptive thinking, and a model is only offered levels its endpoint publishes.
+• Claude's thinking summaries are requested explicitly, Max is reachable on DeepSeek and Kimi, and Off on a model that cannot stop thinking sends nothing at all.
+• No reasoning level is sent until you pick one, so a fresh install no longer overrides every model's own default.
+• Adding a provider is one Cloud list in one order, with a Magpie preset and OpenCode's own mark; Azure is gone, because its address needs a resource name nobody can guess.
+• Long-pressing your own message opens the system's own menu, Copy and Edit and Delete, with a haptic tick and above the message instead of covering it.
+• Everything quiet in a conversation sits on one small-type scale, so times, dates, model names and token counts stop competing with each other.
+• A chat preset carries one set of parameters, keeps the card order you arranged, and a prompt can be renamed or edited from the preset itself.
+• Every generation parameter has its own switch, values you tuned are kept when you switch them off, and Top P is no longer sent beside Temperature.
+• A long answer asked for while the app is open keeps running after the phone is locked, and the system's card appears only once you actually leave the app.
+• What's New is a real system sheet with the system's dim, corners and swipe, and About opens the same sheet.
+• A gateway that refuses a request because it is momentarily full is asked twice more before the error is shown.
+• A photo you sent keeps its thumbnail size for the whole turn, a long prompt keeps one height while the reply streams, and bold text on your own bubble stays white.
+• Regenerate is gone from the menu on your own message: editing the prompt and sending it again is the same thing.

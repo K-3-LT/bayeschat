@@ -1,0 +1,15 @@
+Release date: October 14, 2026
+
+
+English (What's New)
+--------------------
+• Custom providers — OpenCode gateways (Go and Zen) now work end to end: each model is routed to the protocol it expects, and the per-conversation session header is handled for you
+• Gemini fixed — Gemini providers could neither chat nor list models because they pointed at a path that does not exist; they now use Gemini's OpenAI-compatible surface, and providers you already saved correct themselves
+• Provider edits apply immediately — changing a provider's URL, key, or headers now takes effect on the next send, regenerate, edit, or title instead of waiting until you reselect the model
+
+Also in this update:
+• Custom Headers support the {session_id} and {model_id} placeholders, with OpenCode and LiteLLM examples, and a crash when removing a header row is fixed
+• Jump-to-bottom stays available while generating, and no longer appears for short replies that already fit on screen
+• Pinned messages hold still while reasoning or tool cards expand and while a reply streams
+• Fixed a card collapse tap that could read as dead while reasoning was painting
+• OpenCode presets are gone from the provider picker; those gateways are still added by hand with their base URL

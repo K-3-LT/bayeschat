@@ -1,0 +1,33 @@
+Release date: August 17, 2026
+
+
+English (What's New)
+--------------------
+• Chat themes — pick a preset with a live preview; your message bubbles and the top bar follow your look
+• Keyboard-friendly chats — the latest message stays visible above the keyboard, even on the first keyboard call-up
+• Attach multiple photos at once from your photo library
+• Backup & Restore — export your chats, providers, prompts, and settings to a file, and restore them anytime; nothing you have is deleted and API keys never leave your device
+
+Also in this update:
+• Smoother replies — no more stutter when a response finishes
+• More reliable tool integrations (MCP) — stable streaming sessions and cleaner tool definitions
+• Empty new-chat pages — starter cards lift above the keyboard so they're never covered
+• Share sheet fix — sharing now appears right away over Settings on the latest iOS
+• Tool call details — each tool card shows how large the result was (e.g. 12.4K), and when a long result was trimmed before sending, it shows the original and sent sizes
+• Tool result settings — turn result trimming on or off and hide the size readout, under Settings → Chat
+
+
+中文（更新说明）
+--------------
+• 聊天主题——预设主题实时预览，你的气泡和顶栏同步换装
+• 键盘友好——任意键盘弹出时，最新消息都保持可见，首次呼出也不例外
+• 一次从相册多选多张图片
+• 备份与还原——聊天、模型、提示词和设置可导出成文件并随时还原；不会删除任何现有数据，API 密钥永不离开你的设备
+
+本版本还包括：
+• 回复更流畅——流式输出收尾时不再卡顿
+• 工具集成（MCP）更稳定——流式会话更可靠，工具定义更规范
+• 新会话空页面——键盘弹出时起始卡片自动上移，不再被遮挡
+• 分享面板修复——最新 iOS 上分享面板现在会立即在设置页上方弹出
+• 工具调用详情——工具卡片会显示返回结果的大小（如 12.4K），结果被截断时同时显示原始与发送大小
+• 工具结果设置——在“设置 → 聊天”里可以开关结果截断，以及是否显示结果长度

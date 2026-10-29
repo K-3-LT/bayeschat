@@ -1,0 +1,21 @@
+Release date: October 22, 2026
+
+
+Highlights:
+• Background runs no longer get cut off — the Lock Screen card keeps counting up through slow tool calls instead of freezing on one percentage, which was making iOS end the run early, and an interrupted turn is saved in full before the app is suspended
+• One signal when it finishes — the completion notification now waits until the answer, its AI title and any new memory are all saved, so it arrives together with the card instead of while the card still says it is finishing
+• Bold text, lists, tables and formulas stream in with the same steady typewriter fade as plain paragraphs, and no longer arrive in small bursts
+• Reply typography is aligned with the rest of the app: Chinese prose is no longer washed out, formulas sit at body size, headings step 22/20/18, and bold stands out by weight and ink
+• Exported HTML and PDF always use the light palette, so a dark-mode device no longer produces a dark page
+
+Also in this update:
+• The completion notification that keeps a record no longer lights up the screen or makes a sound on top of the Lock Screen card; when no card was shown it still alerts you normally
+• A conversation opened from a notification keeps its jump-to-bottom button wherever you leave it, instead of showing it only above one point in the middle of the chat
+• The exported document's title no longer uses a synthesised bold that smeared Chinese strokes
+• A reply that follows a heading no longer draws its first words at heading size
+• An answer that is still being written no longer flickers when a reasoning block, its text and a tool call are all on screen
+• A DeepSeek V4 tool round keeps going instead of stopping on an error asking for its reasoning to be passed back, including the rounds where the model thought nothing at all
+• A second message in a DeepSeek V4 conversation with tools no longer gets the same rejection, because the earlier turns keep their thinking
+• A table that is still arriving keeps every row it has shown, instead of settling with the header and losing the rows that were mid-paint
+• A reasoning card that is expanded while it streams no longer opens with a blank line
+• The close button on the setup guide and on the chat preset suggestion now dismisses the card

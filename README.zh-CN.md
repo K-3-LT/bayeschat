@@ -193,7 +193,8 @@
 - **邮箱：** <bayeschat@gmail.com>，用于你不想公开发布的内容
 - **隐私政策：** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) 是权威页面
   （[为什么本仓库只放链接](docs/privacy.md)）
-- **每个版本改了什么：** [CHANGELOG.md](CHANGELOG.md)
+- **每个版本改了什么：** [CHANGELOG.md](CHANGELOG.md)（逐条技术记录）
+- **每个版本对外怎么说：** [release-notes](release-notes/)（App Store 文案，中英文）
 - **横向对比：** [iOS 上 BYOK AI 对话应用对比](https://bayeschat.xyz/blog/posts/2026-09-18-best-byok-ai-chat-clients-ios.html)
 
 反馈问题时，请附上应用版本、设备型号、iOS 或 iPadOS 版本、你使用的服务商与模型，以及是否涉及

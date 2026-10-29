@@ -1,0 +1,21 @@
+Release date: October 19, 2026
+
+
+Highlights:
+• Memory, a Pro feature — remembers durable facts and preferences from your chats and applies them in new conversations, all on this device
+• Retried tool calls — a failed tool call is retried in place, with the card showing which attempt is running and how long until the next one
+• Concurrent tool calls — several tool calls in one round now run in parallel, so tool-heavy turns finish sooner
+• Tidier user messages — your own text and photos now fold to one shared height instead of stacking, and a single Show more control opens or closes both
+• A tidier composer — the two parameter pills are now one, labeled with the reasoning level, with a Memory pill that switches memory on or off for this chat
+
+Also in this update:
+• Settings split into Chat and Tools — Chat keeps how a reply reads, Tools holds retries and how tool results are handled
+• Photos in your own messages keep the order you picked them in
+• The reply typewriter holds a steadier pace as text streams in
+• The five built-in starter prompts are gone; your own presets and saved conversations still work
+• Stop stays armed when a stream finishes
+• Picking a preset now applies the preset you picked
+• Deleting a memory lands immediately, and the Memory row is locked for non-Pro users
+• Pro opens from the free-limit alert
+• The theme row keeps its place while you pick a theme
+• Closing Settings or swiping a sheet away no longer flashes the page black or drops a shadow for a frame

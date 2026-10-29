@@ -1,0 +1,14 @@
+This is a highly recommended update. We rebuilt core chat performance and caching — if you’re on 1.0.5, update as soon as you can.
+
+• Completely new rendering engine — much smoother scrolling and far less CPU, even on long chats with code, tables, or math
+• Better prompt caching — much shorter Time to First Token (TTFT), so replies start sooner on supported providers
+• Redesigned reasoning & tool UI — quieter and less distracting while you read the answer
+• Unified Reasoning effort — one clear setting in Settings and Chat Presets for how hard the model should think
+
+Also in this release:
+• Standard iOS edge-swipe to open chat history
+• Finer font-size control
+• Markdown export, plus an export loading animation
+• Rate-the-app link on the About screen
+• iPhone locked to portrait; iPad layout fixes after rotation
+• Fixes for Chat Preset select/deselect and related config restore issues

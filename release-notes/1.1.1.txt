@@ -1,0 +1,16 @@
+Release date: September 2026
+
+
+English (What's New)
+--------------------
+• Smarter composer — auto-growing input, full-screen editing, and keyboard Send; the expanded editor sits flush above the keyboard
+• More stable pinned follow-ups — expanding reasoning/tools or watching the reply stream no longer jumps the pinned bubble
+• Copy from expanded reasoning and tool cards
+• Lighter chat typography — markdown headings and emphasis use softer font weights for easier reading
+
+Also in this update:
+• Just-captured photo shortcut at the top of the plus menu
+• Smoother session titles (full size, centered when short, scrollable when long) without scroll jank during the typewriter
+• Fewer blank flashes when changing theme or closing Settings
+• Faster photo-library attach feedback; steadier empty-state preset layout
+• Refined composer chrome and history-drawer settings gear alignment

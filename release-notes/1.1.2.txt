@@ -1,0 +1,12 @@
+Release date: September 2026
+
+
+English (What's New)
+--------------------
+• Full-resolution attachments — tapping a photo opens the original image, not just the compressed preview
+• Clearer error messages — failed requests show the server or gateway error instead of an empty bubble
+• Community links in About — Discord and X under Support, with wording aligned to the website
+
+Also in this update:
+• What's New card once after each marketing-version upgrade (cold launch)
+• History drawer reopens near the conversation you just selected

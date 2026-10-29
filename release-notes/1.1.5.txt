@@ -1,0 +1,14 @@
+Release date: October 20, 2026
+
+
+Highlights:
+• Background replies on iOS 26 — a reply or a tool run keeps going after you leave the app, with progress on the Lock Screen and in the Dynamic Island
+• Completion notifications — turn them on in Settings to be told when a run finishes while you are away, and tapping the alert opens the conversation that finished
+• Parameters pill — the sliders entry point is back beside the reasoning pill, and its label only shows the values you changed from the defaults
+• Titles and memory in one run — an AI title and any new long-term memory settle inside the same background run as the answer, so the conversation is complete when you return
+
+Also in this update:
+• Tool runs keep their provider credential while the screen is locked, so the next model round no longer fails with an authentication error
+• A model that stops after its tools without writing a final answer now offers Continue instead of ending silently
+• The background task card switches to Done together with its completion icon
+• The jump-to-bottom button returns as soon as a background reply settles, without reopening the conversation

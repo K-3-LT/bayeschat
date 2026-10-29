@@ -217,7 +217,8 @@ The product promise is verifiable, not just stated.
 - **Bugs and questions:** [open an issue](https://github.com/fan3cn/bayeschat/issues) — that's the main channel
 - **Email:** <bayeschat@gmail.com>, for anything you'd rather not post publicly
 - **Privacy policy:** [bayeschat.xyz/privacy.html](https://bayeschat.xyz/privacy.html) is the canonical page ([why this repo only links to it](docs/privacy.md))
-- **What changed in each release:** [CHANGELOG.md](CHANGELOG.md)
+- **What changed in each release:** [CHANGELOG.md](CHANGELOG.md) — the technical record, commit by commit
+- **What's new, in a release's own words:** [release-notes](release-notes/) — the App Store copy, English and Chinese
 - **How it compares:** [BYOK AI chat clients for iOS compared](https://bayeschat.xyz/blog/posts/2026-09-18-best-byok-ai-chat-clients-ios.html)
 
 When reporting a problem, please include the app version, your device model, the

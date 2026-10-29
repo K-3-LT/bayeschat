@@ -1,0 +1,18 @@
+English (What's New)
+--------------------
+• Clearer tool calls & reasoning — live arguments while tools run, cleaner JSON, no text jump when you expand or collapse cards
+• Pick up where you left off — reopen the chat you were in after restart; fewer blank screens after long background
+
+Also in this update:
+• Smoother Settings scrolling
+• More reliable jump-to-bottom after status-bar layout jumps
+
+
+中文（更新说明）
+--------------
+• 工具调用与思考卡片更清晰——工具运行时可看参数，JSON 更易读，展开/折叠时文字不再跳动
+• 接着上次聊——重启后回到你离开时的对话；长时间挂后台后再打开，更少白屏
+
+本版本还包括：
+• 设置页滚动更顺滑
+• 状态栏布局变化后，回到底部更稳定
