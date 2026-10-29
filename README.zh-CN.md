@@ -34,6 +34,8 @@
 
 **BayesChat 官方仓库** —— 发布动态、文档以及每个版本的更新日志。
 
+**服务商可以从这个仓库列进 BayesChat。** 内置服务商列表是一份公开目录：只要你的接口讲 OpenAI Chat Completions 或 Anthropic Messages，一个 PR 就能把它加进 App 的 *Choose Provider* 列表 —— 不用发版、不用改代码。规则和提交步骤见 [`PROVIDERS.md`](PROVIDERS.md)（需要 BayesChat 1.1.7 或更高版本）。
+
 ---
 
 ## BYOK：任意服务商，本地或云端都行

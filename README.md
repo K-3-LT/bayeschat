@@ -34,6 +34,12 @@
 
 **The official BayesChat repo** — news, docs and a changelog for every release.
 
+**Providers can be listed in BayesChat from this repo.** The built-in provider
+list is a public catalogue: if your endpoint speaks OpenAI Chat Completions or
+Anthropic Messages, one pull request adds it to the app's *Choose Provider* list
+— no App Store release, no code. See [`PROVIDERS.md`](PROVIDERS.md) for the rules
+and the submission steps (BayesChat 1.1.7 or later).
+
 ---
 
 ## BYOK: any provider, local or cloud
