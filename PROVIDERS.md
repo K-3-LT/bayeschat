@@ -38,7 +38,7 @@ One pull request, one provider. Add a row to the `providers` array, bump
 | `protocol` | yes | `openAICompatible` or `anthropic`. Anything else is a code change in the app, not data |
 | `modelsDevIDs` | yes | the [models.dev](https://models.dev) provider ids this row covers (`[]` if none). A row without this field is refused |
 | `keywords` | no | defaults to `[id]`. Lowercase fragments matched against the name and base URL a user typed, so their hand-made provider picks up your mark. Must not collide with another row |
-| `logo` | no | either a relative PNG path (`providers/logos/<id>.png`) or `asset:<id>` for a mark that ships with the app. **Absolute URLs and `..` are refused** |
+| `logo` | no | a relative PNG path, `providers/logos/<id>.png`. Omit it when the mark ships inside the app — a bundled mark is named after the row and needs no field. **Absolute URLs, `asset:` references and `..` are refused** |
 
 `generatedAt` is the date the row set changed (`2026-10-29T07:10:34Z`). The app
 shows it as when the list was last updated.
@@ -52,8 +52,9 @@ shows it as when the list was last updated.
   `providers/logos/<id>.png`.
 - A wordmark, a gradient, or a mark with its own background will be flattened
   into a blob. A glyph trimmed to its own outline is what looks right.
-- `asset:<id>` only names a mark that already ships inside the app, and only for
-  the row with the same id — you cannot borrow someone else's.
+- A mark that ships inside the app is an imageset named after the row
+  (`ProviderLogo<Id>`). Leave `logo` out and it is used automatically; there is
+  no field for pointing a row at someone else's.
 
 Until the PNG arrives the row shows the first letter of its name, which is a
 deliberate fallback rather than an error.

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-29T07:10:34Z",
+  "generatedAt": "2026-10-29T07:38:46Z",
   "providers": [
     { "id": "openai", "name": "OpenAI", "baseURL": "https://api.openai.com/v1", "protocol": "openAICompatible", "modelsDevIDs": ["openai"] },
     { "id": "anthropic", "name": "Anthropic", "baseURL": "https://api.anthropic.com", "protocol": "anthropic", "modelsDevIDs": ["anthropic"] },
-    { "id": "gemini", "name": "Google Gemini", "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai", "protocol": "openAICompatible", "modelsDevIDs": ["google"], "keywords": ["gemini", "generativelanguage"], "logo": "asset:gemini" },
+    { "id": "gemini", "name": "Google Gemini", "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai", "protocol": "openAICompatible", "modelsDevIDs": ["google"], "keywords": ["gemini", "generativelanguage"] },
     { "id": "openrouter", "name": "OpenRouter", "baseURL": "https://openrouter.ai/api/v1", "protocol": "openAICompatible", "modelsDevIDs": ["openrouter"] },
     { "id": "mistral", "name": "Mistral", "baseURL": "https://api.mistral.ai/v1", "protocol": "openAICompatible", "modelsDevIDs": ["mistral"] },
     { "id": "xai", "name": "xAI", "baseURL": "https://api.x.ai/v1", "protocol": "openAICompatible", "modelsDevIDs": ["xai"], "keywords": ["x.ai", "xai"] },
@@ -13,13 +13,13 @@
     { "id": "together", "name": "Together AI", "baseURL": "https://api.together.xyz/v1", "protocol": "openAICompatible", "modelsDevIDs": ["togetherai"] },
     { "id": "fireworks", "name": "Fireworks AI", "baseURL": "https://api.fireworks.ai/inference/v1", "protocol": "openAICompatible", "modelsDevIDs": ["fireworks-ai"] },
     { "id": "opencode", "name": "OpenCode", "baseURL": "https://opencode.ai/zen/v1", "protocol": "openAICompatible", "modelsDevIDs": ["opencode"] },
-    { "id": "zhipu", "name": "Zhipu AI", "baseURL": "https://open.bigmodel.cn/api/paas/v4", "protocol": "openAICompatible", "modelsDevIDs": ["zai", "zhipuai"], "keywords": ["zhipu", "bigmodel", "glm"], "logo": "asset:zhipu" },
+    { "id": "zhipu", "name": "Zhipu AI", "baseURL": "https://open.bigmodel.cn/api/paas/v4", "protocol": "openAICompatible", "modelsDevIDs": ["zai", "zhipuai"], "keywords": ["zhipu", "bigmodel", "glm"] },
     { "id": "moonshot", "name": "Moonshot Kimi", "baseURL": "https://api.moonshot.cn/v1", "protocol": "openAICompatible", "modelsDevIDs": ["moonshotai"], "keywords": ["moonshot", "kimi"] },
     { "id": "minimax", "name": "MiniMax", "baseURL": "https://api.minimaxi.com/v1", "protocol": "openAICompatible", "modelsDevIDs": ["minimax", "minimax-cn"] },
-    { "id": "xiaomi", "name": "Xiaomi MiMo", "baseURL": "https://api.xiaomimimo.com/v1", "protocol": "openAICompatible", "modelsDevIDs": ["xiaomi"], "keywords": ["xiaomi", "mimo"], "logo": "asset:xiaomi" },
-    { "id": "qwen", "name": "Qwen", "baseURL": "https://dashscope.aliyuncs.com/compatible-mode/v1", "protocol": "openAICompatible", "modelsDevIDs": ["alibaba"], "keywords": ["qwen", "dashscope"], "logo": "asset:qwen" },
+    { "id": "xiaomi", "name": "Xiaomi MiMo", "baseURL": "https://api.xiaomimimo.com/v1", "protocol": "openAICompatible", "modelsDevIDs": ["xiaomi"], "keywords": ["xiaomi", "mimo"] },
+    { "id": "qwen", "name": "Qwen", "baseURL": "https://dashscope.aliyuncs.com/compatible-mode/v1", "protocol": "openAICompatible", "modelsDevIDs": ["alibaba"], "keywords": ["qwen", "dashscope"] },
     { "id": "volcengine", "name": "Volcengine", "baseURL": "https://ark.cn-beijing.volces.com/api/v3", "protocol": "openAICompatible", "modelsDevIDs": ["volcengine"], "keywords": ["volcengine", "volces", "ark"] },
-    { "id": "tencentcloud", "name": "Tencent Cloud", "baseURL": "https://api.hunyuan.cloud.tencent.com/v1", "protocol": "openAICompatible", "modelsDevIDs": [], "keywords": ["tencent", "hunyuan"], "logo": "asset:tencentcloud" },
+    { "id": "tencentcloud", "name": "Tencent Cloud", "baseURL": "https://api.hunyuan.cloud.tencent.com/v1", "protocol": "openAICompatible", "modelsDevIDs": [], "keywords": ["tencent", "hunyuan"] },
     { "id": "stepfun", "name": "StepFun", "baseURL": "https://api.stepfun.com/v1", "protocol": "openAICompatible", "modelsDevIDs": ["stepfun"] }
   ]
 }

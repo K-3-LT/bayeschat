@@ -26,10 +26,11 @@
  *     two rows may claim the same one.
  *  7. Hosts are identity: two rows may not share one, or the app would have to
  *     pick a winner.
- *  8. Marks. `asset:<id>` may only name the row's own id — nobody borrows an
- *     existing app asset. A downloadable mark is `providers/logos/<id>.png`: a
- *     real PNG, small, roughly square, and present in this repository. Absolute
- *     URLs and `..` are refused, because the app only fetches from this host.
+ *  8. Marks. A row without `logo` uses the mark that ships with the app (named
+ *     after the id), so there is no field for borrowing one. A downloadable mark
+ *     is `providers/logos/<id>.png`: a real PNG, small, roughly square, and
+ *     present in this repository. Absolute URLs, `asset:` references and `..`
+ *     are refused, because the app only fetches relative paths from this host.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -183,21 +184,12 @@ catalog.providers.forEach((row, index) => {
     return;
   }
 
-  if (logo.startsWith("asset:")) {
-    const assetID = logo.slice("asset:".length);
-    if (assetID !== id) {
-      report(`${where}.logo`, `an app asset may only be named after the row itself (${id})`);
-    }
-    return;
-  }
-
   marks += 1;
   const expected = `providers/logos/${id}.png`;
+  // One shape, one place. A row that names anything else (an absolute URL, an
+  // `asset:` reference, a shared file) is refused here rather than fetched.
   if (logo !== expected) {
     report(`${where}.logo`, `must be ${expected}`);
-  }
-  if (logo.includes("://") || logo.startsWith("/") || logo.split("/").some((part) => part === "." || part === "..")) {
-    report(`${where}.logo`, "must be a relative path inside this repository");
     return;
   }
 
