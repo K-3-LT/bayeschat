@@ -48,9 +48,35 @@ provider per pull request.
 
 ## The logo
 
-- PNG, transparent background, **one colour** — the app renders it as a tinted glyph, so a detailed wordmark becomes a blob.
-- 512 KB max, 16–1024 px.
-- Omit `logo` only if the mark already ships inside the app.
+The app draws every mark the same way: the PNG's **alpha channel becomes the
+shape**, filled with the theme's text colour. Colour is thrown away, and the
+shape has to carry itself at 20 pt — that is where it is drawn in lists, and at
+14 pt in section headers.
+
+- **Transparent background, one colour.** Black, white or any single colour is
+  fine; what matters is that the pixels *around* the mark are transparent. A PNG
+  exported with a white (or black) plate behind it flattens into one solid
+  square and the shape disappears.
+- **An alpha channel is required.** A PNG without one (plain RGB, no
+  transparency) cannot be drawn as a glyph and ends up the same solid block.
+- **Roughly square.** Keep the long side under about 2.5× the short side. A
+  wordmark such as 1000×80 shrinks to a thin line.
+- **Leave margins.** Around 8% of padding on each side keeps your mark the same
+  optical size as the rows next to it. If the logo is itself a filled plate
+  (a solid square), that is what will be drawn — at 20 pt it reads as a block,
+  so prefer the outlined variant, or the plate inside padding.
+- **No shadow or glow.** A semi-transparent halo becomes a grey ring at that
+  size.
+- 512 KB max, 16–1024 px per side, one file per row at
+  `providers/logos/<id>.png`. Omit `logo` only if the mark already ships inside
+  the app.
+
+Before opening the pull request, flatten the file in your head: fill every
+non-transparent pixel with one colour and look at the result at 60 px. If the
+shape is still recognisable there, it will look right in the app. These are
+drawing rules, not file checks — the validator can only see the size and the
+pixel bounds, so a mark that breaks them still passes CI and still looks wrong
+on a phone.
 
 ## Not accepted
 
