@@ -5,9 +5,9 @@ row per endpoint, prefilled with the name, the base URL and the protocol, plus a
 mark to show beside it.
 
 It ships inside the app **and** is downloaded from this repository, so a pull
-request here reaches people who already have the app: it is picked up by the
-daily check, or straight away from *Settings → Provider Data → Check for
-Updates*. No App Store release.
+request here reaches people who already have the app: the app refreshes the
+list the next time someone opens *Choose Provider* to add a provider. No App
+Store release.
 
 ```
 GET https://raw.githubusercontent.com/fan3cn/bayeschat/main/providers.json
@@ -86,8 +86,8 @@ this pull request. Paste its output in the description.
 
 ## After it merges
 
-Merging to `main` publishes the file. Users get it on the next daily check, or
-immediately from *Settings → Provider Data*. Reverting the pull request removes
-it again on the next check.
+Merging to `main` publishes the file. Users get it the next time they open
+*Choose Provider*; a refresh that fails or times out leaves the list they
+already have. Reverting the pull request removes it the same way.
 
 Being listed is free and is not an endorsement.
